@@ -1,6 +1,6 @@
 # EmoWOZ integration
 
-Run from the repository root (Python 3.11, CPU; no new dependencies):
+Run from the repository root (CPU; no new dependencies):
 
 ```powershell
 uv run python scripts/fetch_emowoz.py
@@ -10,9 +10,14 @@ uv run python scripts/emowoz_stats.py
 
 Download time depends on the network (about 178 MB); loading and statistics take
 seconds on a typical laptop. Existing MELD/DailyDialog downloads are untouched.
-Use `from emotionshift.data.loaders import load; df = load("emowoz")`.
-The first ten columns match the shared schema. Extra columns preserve
-`emotion_original_id`, `emotion_original`, and `source` (multiwoz/dialmage).
+There are two views of the same release:
+
+- `load("emowoz")` keeps the native seven labels and the system turns as context.
+  ShiftAware's EmoWOZ results use this view.
+- `load_emowoz_shared()` keeps user turns only, on the mapped shared labels, for
+  cross-dataset comparison. Its first ten columns match the shared schema; extra
+  columns preserve `emotion_original_id`, `emotion_original`, and `source`
+  (multiwoz/dialmage). The tables in `reports/emowoz/` use this view.
 
 ## Data contract
 
@@ -26,9 +31,9 @@ zero-based position in the full dialogue (0, 2, 4, ...).
 The release alternates user/system turns, starting with the user. Only user
 turns are labelled targets. Read the final adjudicated label at
 `log[turn]["emotion"][3]["emotion"]`, not individual annotator votes.
-Unlabelled system turns are excluded, never assigned neutral. The original
-download remains available for future context models; this target table alone
-does not include system context. Do not feed it into code assuming A/B alternate.
+Unlabelled system turns are never assigned neutral: `load("emowoz")` keeps them
+with a missing label, and `load_emowoz_shared()` excludes them, so that table does
+not include system context. Do not feed it into code assuming A/B alternate.
 
 ## Explicit, lossy project mapping
 
@@ -64,19 +69,12 @@ Raw data stays in ignored `data/raw/`. Tests include a tiny offline fixture and
 optional full-release checks; the existing MELD/DailyDialog regression tests
 remain the acceptance criteria for their unchanged behavior.
 
-For a video code snippet, show the `load_emowoz` label-extraction and row
-construction block (at most 15 lines); demonstrate `load("emowoz")` and the
-summary tables. This change supplies dataset integration and source tables,
+For a video code snippet, show the `_read_emowoz` label-extraction block and
+`load_emowoz_shared` (at most 15 lines); demonstrate both views and the summary
+tables. This change supplies dataset integration and source tables,
 not trained-model scores. Slides, recorded narration, signed forms and the
 executed presentation notebook remain separate team hand-in items described
 in `docs/TEAM_GUIDE.md`.
-
-## VS Code
-
-Open the repository folder itself. Select `.venv/Scripts/python.exe` with
-Python: Select Interpreter if VS Code has remembered another interpreter.
-The workspace default points to this environment; run commands from the root.
-Notebook kernels must also use this environment (install ipykernel if needed).
 
 ## References
 

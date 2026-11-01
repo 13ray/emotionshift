@@ -6,15 +6,15 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from emotionshift.data.loaders import RAW, load_emowoz
+from emotionshift.data.loaders import DATA_ROOT, load_emowoz_shared
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--raw", type=Path, default=RAW / "emowoz")
+    parser.add_argument("--root", type=Path, default=DATA_ROOT)
     parser.add_argument("--output", type=Path, default=Path("reports/emowoz"))
     args = parser.parse_args()
-    df = load_emowoz(args.raw)
+    df = load_emowoz_shared(root=args.root)
     args.output.mkdir(parents=True, exist_ok=True)
     summary = {}
     for split, group in df.groupby("split"):
@@ -35,7 +35,7 @@ def main():
         df.groupby(columns).size().rename("n").reset_index().to_csv(args.output / f"{name}.csv", index=False)
     summary["provenance"] = {
         p.name: hashlib.sha256(p.read_bytes()).hexdigest()
-        for p in sorted(args.raw.glob("*.json")) if p.name != "download_manifest.json"
+        for p in sorted((args.root / "emowoz").glob("*.json")) if p.name != "download_manifest.json"
     }
     (args.output / "summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(summary, indent=2))

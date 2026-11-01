@@ -3,6 +3,11 @@
 MELD and DailyDialog already use the same seven labels once DailyDialog's
 ``happiness`` is read as ``joy`` and ``no_emotion`` as ``neutral``, so no lossy
 mapping is needed between the two datasets.
+
+EmoWOZ (Feng et al., 2022) keeps its own seven labels for task-oriented
+dialogue: mapping "dissatisfied" or "apologetic" onto Ekman emotions would be
+lossy. Only its user turns are labelled; system turns are unlabelled context.
+Use ``emotions(dataset)`` for the label list of a dataset.
 """
 
 # Fixed order: every model in the project should use these integer ids.
@@ -21,18 +26,65 @@ DAILYDIALOG_MAP = {
     "fear": "fear",
 }
 
-# Valence used for shift typing (surprise is ambiguous, neutral has none).
-POSITIVE = {"joy"}
-NEGATIVE = {"anger", "sadness", "disgust", "fear"}
-
-# EmoWOZ's native taxonomy is not equivalent to the shared seven classes.
-# These are explicit, lossy project conventions; retain native IDs and names.
-EMOWOZ_LABELS = {
-    0: "neutral", 1: "fearful", 2: "dissatisfied", 3: "apologetic",
-    4: "abusive", 5: "excited", 6: "satisfied",
-}
-EMOWOZ_MAP = {
-    "neutral": "neutral", "fearful": "fear", "dissatisfied": "anger",
-    "apologetic": "sadness", "abusive": "anger", "excited": "joy",
+# EmoWOZ raw label ids 0..6, in its own order; -1 marks unlabelled system turns.
+EMOWOZ_EMOTIONS = [
+    "neutral",
+    "fearful",  # fearful / sad / disappointed
+    "dissatisfied",  # dissatisfied / disliking
+    "apologetic",
+    "abusive",
+    "excited",  # excited / happy / anticipating
+    "satisfied",  # satisfied / liking
+]
+EMOWOZ_MAP = dict(enumerate(EMOWOZ_EMOTIONS))
+# Explicit, lossy convention for comparing EmoWOZ with the shared seven labels;
+# see docs/EMOWOZ.md. load("emowoz") itself keeps the native labels.
+EMOWOZ_SHARED_MAP = {
+    "neutral": "neutral",
+    "fearful": "fear",
+    "dissatisfied": "anger",
+    "apologetic": "sadness",
+    "abusive": "anger",
+    "excited": "joy",
     "satisfied": "joy",
+}
+
+LABEL_SPACES = {"meld": EMOTIONS, "dailydialog": EMOTIONS, "emowoz": EMOWOZ_EMOTIONS}
+DATASETS = tuple(LABEL_SPACES)
+
+
+def emotions(dataset: str) -> list[str]:
+    """Label list of ``dataset``; position is the integer class id."""
+    if dataset not in LABEL_SPACES:
+        raise ValueError(f"Unknown dataset {dataset!r}; choose from {DATASETS}")
+    return LABEL_SPACES[dataset]
+
+
+# Valence used for shift typing (surprise is ambiguous, neutral has none).
+# EmoWOZ valences follow its labelling scheme; label names do not overlap
+# across label spaces, so one table serves every dataset.
+POSITIVE = {"joy", "excited", "satisfied"}
+NEGATIVE = {
+    "anger",
+    "sadness",
+    "disgust",
+    "fear",
+    "fearful",
+    "dissatisfied",
+    "apologetic",
+    "abusive",
+}
+
+SPLITS = ("train", "dev", "test")
+VALENCE = {
+    e: (
+        "positive"
+        if e in POSITIVE
+        else "negative"
+        if e in NEGATIVE
+        else "ambiguous"
+        if e == "surprise"
+        else "neutral"
+    )
+    for e in dict.fromkeys([*EMOTIONS, *EMOWOZ_EMOTIONS])
 }
