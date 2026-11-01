@@ -1,13 +1,15 @@
 """One utterance table for MELD, the conv-emotion DailyDialog JSON release and EmoWOZ.
 
-``load(dataset, splits=..., root=...)`` reads only requested official splits.
-DailyDialog's ``test_dedup`` is an explicit view: exclude verbatim train overlap
-and keep the first occurrence of each remaining test dialogue. Matching uses
-case-sensitive raw text with whitespace collapsed, before model text cleanup.
+``load(dataset, splits=..., root=...)`` reads only requested splits. By default
+DailyDialog also returns ``test_dedup``, its headline test set: exclude verbatim
+train overlap and keep the first occurrence of each remaining test dialogue.
+Matching uses case-sensitive raw text with whitespace collapsed, before model
+text cleanup.
 
-Every row retains raw_text, source_split and source_dialogue_id alongside a
-unique dialogue_id scoped to dataset and output split. Gold shift annotations
-are evaluation metadata; models must not use them as inference features.
+``dialogue_id`` is the source dialogue ID, unique only within a split, so key
+utterances by (dataset, split, dialogue_id, turn). Every row also retains
+raw_text, source_split and source_dialogue_id. Gold shift annotations are
+evaluation metadata; models must not use them as inference features.
 MELD-FR has its own instance/trigger schema via load_meld_fr.
 
 EmoWOZ uses its own label space (``labels.emotions("emowoz")``). Its system
@@ -76,7 +78,7 @@ def clean_text(s: str) -> str:
 def _select_splits(dataset, splits):
     allowed = (*SPLITS, "test_dedup") if dataset == "dailydialog" else SPLITS
     selected = (
-        SPLITS if splits is None else ((splits,) if isinstance(splits, str) else tuple(splits))
+        allowed if splits is None else ((splits,) if isinstance(splits, str) else tuple(splits))
     )
     if (
         not selected
@@ -131,7 +133,7 @@ def _finish(frame, dataset, split):
     frame["dataset"] = dataset
     frame["split"] = split
     frame["source_split"] = "test" if split == "test_dedup" else split
-    frame["dialogue_id"] = dataset + "-" + split + "-" + frame["source_dialogue_id"].astype(str)
+    frame["dialogue_id"] = frame["source_dialogue_id"]
     # Only EmoWOZ system turns are unlabelled; any other missing label is unknown.
     unlabelled = frame["speaker"].eq("system") if dataset == "emowoz" else False
     if (frame["emotion"].isna() != unlabelled).any():
@@ -147,7 +149,7 @@ def _finish(frame, dataset, split):
 def load(dataset: str, splits=None, *, root: Path = DATA_ROOT) -> pd.DataFrame:
     """Return annotated utterances for the requested splits, in requested order.
 
-    Defaults to train/dev/test; request DailyDialog test_dedup explicitly.
+    Defaults to train/dev/test, plus test_dedup for DailyDialog.
     ``root`` contains meld/, dailydialog/ and emowoz/. No downloads or writes occur.
     Within each split, rows follow source dialogue ID and turn order.
     """

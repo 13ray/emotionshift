@@ -27,7 +27,7 @@ def test_loads_only_requested_split_and_preserves_raw_text(tmp_path):
     assert frame.raw_text.tolist() == [text]
     assert frame.text.tolist() == ["I ' m happy !"]
     assert frame.emotion.tolist() == ["joy"]
-    assert frame.dialogue_id.tolist() == ["dailydialog-test-0"]
+    assert frame.dialogue_id.tolist() == [0]
     assert frame.source_dialogue_id.tolist() == [0]
     assert frame.source_split.tolist() == ["test"]
 
@@ -51,9 +51,9 @@ def test_dedup_uses_raw_case_sensitive_text_and_keeps_first_copy(tmp_path):
     assert dedup.source_split.unique().tolist() == ["test"]
     # Normalized model inputs can coincide without becoming verbatim duplicates.
     assert dedup.text.iloc[1] == dedup.text.iloc[2]
-    assert not frame.duplicated(["dialogue_id", "turn"]).any()
+    assert not frame.duplicated(["split", "dialogue_id", "turn"]).any()
     assert duplicate_dialogues(frame[frame.split == "train"], frame[frame.split == "test"]) == {
-        "dailydialog-test-0",
+        0,
     }
 
 
@@ -76,13 +76,13 @@ def test_numeric_source_order_and_speaker_history(tmp_path):
     assert frame.prev_emotion.iloc[2] == "neutral"
 
 
-def test_default_splits_do_not_duplicate_test_rows(tmp_path):
-    for split in ("train", "valid", "test"):
-        write_dd(tmp_path, split, [[("Okay", "no_emotion")]])
+def test_default_splits_include_dailydialog_headline_test_set(tmp_path):
+    for split, text in (("train", "Okay"), ("valid", "Fine"), ("test", "Sure")):
+        write_dd(tmp_path, split, [[(text, "no_emotion")]])
     frame = load("dailydialog", root=tmp_path)
-    assert frame.split.tolist() == ["train", "dev", "test"]
-    assert frame.stratum.tolist() == ["first"] * 3
-    assert frame.dialogue_id.nunique() == 3
+    assert frame.split.tolist() == ["train", "dev", "test", "test_dedup"]
+    assert frame.stratum.tolist() == ["first"] * 4
+    assert frame.dialogue_id.tolist() == [0] * 4
 
 
 @pytest.mark.parametrize(
@@ -147,7 +147,7 @@ def test_emowoz_keeps_system_turns_as_unlabelled_context(tmp_path):
     )
     frame = load("emowoz", "train", root=tmp_path)
     # The repeated train ID is loaded once; the ".json" suffix is dropped.
-    assert sorted(frame.dialogue_id.unique()) == ["emowoz-train-DMAGE2", "emowoz-train-MUL1"]
+    assert sorted(frame.dialogue_id.unique()) == ["DMAGE2", "MUL1"]
     user = frame[frame.speaker == "user"]
     system = frame[frame.speaker == "system"]
     assert user.turn.tolist() == [0, 2, 0, 2]

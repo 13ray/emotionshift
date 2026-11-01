@@ -1,6 +1,6 @@
 """PyTorch datasets and CPU batch collators over the shared utterance table.
 
-Install with ``uv sync --extra training``. Import this module explicitly so
+Install with ``uv sync --extra train``. Import this module explicitly so
 the sklearn pipeline does not require PyTorch. Tokenizers are injected and
 must support the Hugging Face batch-call interface; no model is downloaded.
 

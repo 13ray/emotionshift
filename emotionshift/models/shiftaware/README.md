@@ -1,15 +1,15 @@
 # ShiftAware
 
 Trainable, causal emotion dynamics for multi-speaker dialogues. This implements
-the revised architecture discussed on 29 October 2026. There are no trained
-weights or measured accuracy results yet.
+the revised architecture discussed on 29 October 2026. Measured results are in
+`reports/shiftaware/results.md`; trained weights are not in Git.
 
 ## Install and check
 
 ```bash
-uv sync --extra training
-uv run --extra training python scripts/smoke_shiftaware.py
-uv run --extra training pytest tests/test_shiftaware.py
+uv sync --extra train
+uv run --extra train python scripts/smoke_shiftaware.py
+uv run --extra train pytest tests/test_shiftaware.py
 ```
 
 The smoke command optimizes a tiny model on synthetic embeddings. It needs no
@@ -19,8 +19,8 @@ Use `--device cuda` on an L40S, or `--global-memory gru` to exercise the alterna
 To train the text model on local MELD data, run:
 
 ```bash
-uv sync --extra training
-uv run --extra training python scripts/train_shiftaware.py \
+uv sync --extra train
+uv run --extra train python scripts/train_shiftaware.py \
   --dataset meld --output-dir models/shiftaware/meld_seed42
 ```
 
@@ -46,7 +46,7 @@ predictor = ShiftAwarePredictor(text_model, tokenizer)
 labels = predictor.predict(["Hello", "What happened?"], speakers=["A", "B"])
 ```
 
-For RoBERTa, install `uv sync --extra training`. Model construction and
+For RoBERTa, install `uv sync --extra train`. Model construction and
 imports never download weights. Only an explicit `from_pretrained(...)` call
 may download a model; use `local_files_only=True` for a local checkpoint.
 

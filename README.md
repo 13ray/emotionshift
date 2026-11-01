@@ -37,7 +37,7 @@ uv run pytest                    # data rules, pilot numbers, metrics, original 
 from emotionshift.data.loaders import load
 
 df = load("meld")  # or "dailydialog" or "emowoz"; one row per utterance
-# Official train/dev/test by default; request DailyDialog test_dedup explicitly.
+# Official train/dev/test by default, plus test_dedup for DailyDialog.
 dd = load("dailydialog", splits=("train", "dev", "test_dedup"))
 ```
 
@@ -87,7 +87,6 @@ one that reproduces the proposal's counts.
 | Column | Meaning |
 |---|---|
 | `dataset`, `split`, `dialogue_id`, `turn`, `speaker`, `text` | Identify the utterance |
-| `source_split`, `source_dialogue_id`, `raw_text` | Trace the row to the unmodified source |
 | `emotion` | Gold label |
 | `pred` | Predicted label (one of the 7) |
 | `stratum`, `shift_type` | Gold shift labels, for stratified scoring |
@@ -146,23 +145,23 @@ and never committed.
 All imports now share the same shift labels (`surprise`) and seven-class macro-F1.
 All notebooks and models use the unified loader in `emotionshift/data/loaders.py`;
 `datasets.py` retains compatibility imports only. `load(dataset, splits=None,
-root=DATA_ROOT)` defaults to official train/dev/test and reads only the requested
-splits. To use another data directory, pass `root` containing `meld/`,
+root=DATA_ROOT)` defaults to official train/dev/test, plus `test_dedup` for
+DailyDialog, and reads only the requested splits. To use another data directory, pass `root` containing `meld/`,
 `dailydialog/` and `emowoz/`. No data is downloaded during loading.
 
 Every utterance has `dataset`, `split`, `dialogue_id`, `source_split`,
 `source_dialogue_id`, `turn`, `speaker`, `raw_text`, `text`, `emotion`,
-`prev_emotion`, `turn_gap`, `stratum`, and `shift_type`. Dialogue IDs include the
-dataset and output split, such as `dailydialog-test_dedup-42`; the source fields
-identify this as dialogue 42 in the original test release. Rows follow numeric
-source dialogue ID and turn order within each requested split.
+`prev_emotion`, `turn_gap`, `stratum`, and `shift_type`. `dialogue_id` is the
+source dialogue ID, unique only within a split, so key utterances by dataset,
+split, dialogue ID and turn. Rows follow source dialogue ID and turn order within
+each requested split.
 
 DailyDialog uses the conv-emotion JSON release for every model. `raw_text` is
 retained unchanged; `text` uses B1's Unicode/punctuation normalization and
 whitespace collapse, preserving tokenized punctuation spacing. Deduplication
 uses ordered, case-sensitive raw text with whitespace collapsed, before text
-cleanup. Request `test_dedup` explicitly: it removes train overlap and repeated
-test dialogues, retaining the first remaining copy. Official `test` is unchanged.
+cleanup. `test_dedup` removes train overlap and repeated test dialogues,
+retaining the first remaining copy. Official `test` is unchanged.
 MELD-FR remains available through `load_meld_fr(split, root=...)` with its
 instance IDs, trigger labels, raw text, and the same text cleanup.
 
@@ -189,16 +188,16 @@ causal context and forecasting, tokenizers, tensor shapes, padding and loss mask
 The modular [ShiftAware implementation](emotionshift/models/shiftaware/README.md)
 supports cached embeddings or an optional RoBERTa encoder, causal speaker
 attention, global and speaker memories, forecasting, and a joint masked loss.
-Run `uv run --extra training python scripts/smoke_shiftaware.py` for an offline
+Run `uv run --extra train python scripts/smoke_shiftaware.py` for an offline
 optimization check; this does not train a benchmark model.
 For an end-to-end text run, use
-`uv run --extra training python scripts/train_shiftaware.py --dataset meld --output-dir models/shiftaware/meld_seed42`
+`uv run --extra train python scripts/train_shiftaware.py --dataset meld --output-dir models/shiftaware/meld_seed42`
 after fetching MELD and the chosen pretrained encoder. Training settings are
 in `configs/shiftaware_train.yaml`; the best checkpoint is selected on dev.
 
 ```bash
-uv sync --extra training
-uv run --extra training pytest
+uv sync --extra train
+uv run --extra train pytest
 ```
 
 ## Development checks
@@ -208,9 +207,9 @@ Use the tools directly from the repository root:
 ```bash
 uv run ruff check .
 uv run ruff format --check .
-uv run --extra training ty check
+uv run --extra train ty check
 uv run vulture
-uv run --extra training pytest
+uv run --extra train pytest
 ```
 
 Run `uv run ruff check --fix .` and `uv run ruff format .` to apply safe fixes

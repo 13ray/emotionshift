@@ -287,7 +287,7 @@ def load_trained_model(directory: str | Path, *, device: str | torch.device = "c
     try:
         transformers = import_module("transformers")
     except ImportError as exc:
-        raise ImportError("Install the text encoder with: uv sync --extra training") from exc
+        raise ImportError("Install the text encoder with: uv sync --extra train") from exc
     checkpoint = torch.load(directory / "best.pt", map_location="cpu", weights_only=True)
     architecture = ShiftAwareConfig(**checkpoint["architecture"])
     encoder_config = transformers.AutoConfig.from_pretrained(

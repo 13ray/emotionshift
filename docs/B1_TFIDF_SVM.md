@@ -106,7 +106,6 @@ m.top_features(10)
 `uv run python scripts/train_b1.py --quick` runs a smoke test in
 `outputs_quick/` and leaves the published reports and predictions intact.
 The full command writes models under `models/` (ignored by Git); executed
-notebooks and per-model reports remain tracked. Prediction files use globally
-unique dialogue IDs plus source IDs and raw text, as described in the
+notebooks and per-model reports remain tracked. Prediction files use the
 [shared data contract](../README.md#data-interface).
 For new neural models, follow the [PyTorch training guide](TRAINING.md).

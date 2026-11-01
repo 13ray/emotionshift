@@ -63,7 +63,7 @@ class TransformerUtteranceEncoder(nn.Module):
         try:
             auto_model = import_module("transformers").AutoModel
         except ImportError as exc:
-            raise ImportError("Install the encoder with: uv sync --extra training") from exc
+            raise ImportError("Install the encoder with: uv sync --extra train") from exc
         backbone = auto_model.from_pretrained(name, local_files_only=local_files_only)
         return cls(
             backbone,

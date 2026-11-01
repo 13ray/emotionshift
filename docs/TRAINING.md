@@ -3,8 +3,8 @@
 Install the optional training dependencies and run the training checks with:
 
 ```bash
-uv sync --extra training
-uv run --extra training pytest
+uv sync --extra train
+uv run --extra train pytest
 ```
 
 `emotionshift.data.torch_data` provides `UtteranceDataset`, `DialogueDataset`,

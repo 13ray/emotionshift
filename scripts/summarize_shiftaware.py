@@ -21,7 +21,7 @@ METRIC_KEYS = ["weighted_f1", "macro_f1", "micro_f1_no_neutral", "accuracy"]
 
 def mean_std(values) -> dict[str, float]:
     values = [float(v) for v in values]
-    return {"mean": float(np.mean(values)), "std": float(np.std(values)), "per_seed": values}
+    return {"mean": float(np.mean(values)), "std": float(np.std(values, ddof=1)) if len(values) > 1 else 0.0, "per_seed": values}
 
 
 def summarize(variant_dir: Path, dataset: str) -> dict[str, Any] | None:
@@ -124,7 +124,7 @@ def main():
         "shift-head AUROC",
     ]
     lines = [
-        "# ShiftAware results (test, mean ± std over seeds)",
+        "# ShiftAware results (test, mean ± sample std over seeds)",
         "",
         "Checkpoints and variants are selected on dev only. Shift-turn F1 is the seed mean.",
         "",

@@ -186,7 +186,7 @@ def main():
     try:
         auto_tokenizer = import_module("transformers").AutoTokenizer
     except ImportError as exc:
-        raise ImportError("Install the text encoder with: uv sync --extra training") from exc
+        raise ImportError("Install the text encoder with: uv sync --extra train") from exc
     tokenizer = cast(
         Any, auto_tokenizer.from_pretrained(args.model_name, local_files_only=args.local_files_only)
     )
