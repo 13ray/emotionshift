@@ -26,7 +26,15 @@ from pathlib import Path
 
 import pandas as pd
 
-from .labels import DAILYDIALOG_MAP, DATASETS, EMOWOZ_MAP, MELD_MAP, SPLITS
+from .labels import (
+    DAILYDIALOG_MAP,
+    DATASETS,
+    EMOWOZ_EMOTIONS,
+    EMOWOZ_MAP,
+    EMOWOZ_SHARED_MAP,
+    MELD_MAP,
+    SPLITS,
+)
 from .shifts import add_shift_labels
 
 DATA_ROOT = Path(__file__).resolve().parents[2] / "data" / "raw"
@@ -105,9 +113,13 @@ def _read_emowoz(raw, selected):
         dialogues.update(json.loads((raw / f"emowoz-{source}.json").read_text(encoding="utf-8")))
     split_ids = json.loads((raw / "data-split.json").read_text(encoding="utf-8"))
     rows = {}
+    assigned = set()
     for split in selected:
         # The train list repeats one dialogue ID; keep its first occurrence.
         ids = dict.fromkeys(i for source in _EMOWOZ_SOURCES for i in split_ids[split][source])
+        if assigned & ids.keys():
+            raise ValueError(f"EmoWOZ dialogues appear in multiple partitions: {assigned & ids.keys()}")
+        assigned |= ids.keys()
         rows[split] = []
         for dialogue_id in ids:
             for turn, utterance in enumerate(dialogues[dialogue_id]["log"]):
@@ -225,6 +237,40 @@ def load_dailydialog(splits=None, *, root: Path = DATA_ROOT) -> pd.DataFrame:
 def load_emowoz(splits=None, *, root: Path = DATA_ROOT) -> pd.DataFrame:
     """Convenience form of load('emowoz', splits, root=root)."""
     return load("emowoz", splits, root=root)
+
+
+def load_emowoz_shared(splits=None, *, root: Path = DATA_ROOT) -> pd.DataFrame:
+    """EmoWOZ user turns on the shared seven labels, for cross-dataset comparison.
+
+    The mapping is lossy (docs/EMOWOZ.md), so strata are recomputed on the mapped
+    labels. Native labels stay in emotion_original_id and emotion_original.
+    """
+    native = load("emowoz", splits, root=root)
+    frame = native[native["speaker"].eq("user")].copy()
+    frame["emotion_original"] = frame["emotion"]
+    frame["emotion_original_id"] = frame["emotion"].map(EMOWOZ_EMOTIONS.index)
+    frame["source"] = frame["source_dialogue_id"].str.startswith("DMAGE").map(
+        {True: "dialmage", False: "multiwoz"}
+    )
+    frame["emotion"] = frame["emotion"].map(EMOWOZ_SHARED_MAP)
+    frame = add_shift_labels(frame).reset_index(drop=True)
+    return frame[
+        [
+            "dataset",
+            "split",
+            "dialogue_id",
+            "turn",
+            "speaker",
+            "text",
+            "emotion",
+            "prev_emotion",
+            "stratum",
+            "shift_type",
+            "emotion_original_id",
+            "emotion_original",
+            "source",
+        ]
+    ]
 
 
 def duplicate_dialogues(reference, target):

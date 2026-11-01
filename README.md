@@ -132,6 +132,17 @@ pilot/                   original proposal pilot scripts and statistics
 deliverables/            temporary collection folders for the video (removed before submission)
 ```
 
+## EmoWOZ shared-label view
+
+**Contributor: Rachel ([13ray](https://github.com/13ray)).**
+Details: **[EmoWOZ integration, label mapping and run instructions](docs/EMOWOZ.md)**.
+
+`load("emowoz")` keeps EmoWOZ's native labels. `load_emowoz_shared()` returns user
+turns on the shared seven labels through an explicit, lossy mapping, for
+cross-dataset comparison. [`reports/emowoz/`](reports/emowoz/) has reproducible
+split, native-label, shared-label and shift tables from
+`uv run python scripts/emowoz_stats.py`. No trained-model results come from this view.
+
 ## Data sources
 
 MELD (Poria et al., 2019) from github.com/declare-lab/MELD; DailyDialog (Li et al.,

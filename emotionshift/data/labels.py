@@ -37,6 +37,17 @@ EMOWOZ_EMOTIONS = [
     "satisfied",  # satisfied / liking
 ]
 EMOWOZ_MAP = dict(enumerate(EMOWOZ_EMOTIONS))
+# Explicit, lossy convention for comparing EmoWOZ with the shared seven labels;
+# see docs/EMOWOZ.md. load("emowoz") itself keeps the native labels.
+EMOWOZ_SHARED_MAP = {
+    "neutral": "neutral",
+    "fearful": "fear",
+    "dissatisfied": "anger",
+    "apologetic": "sadness",
+    "abusive": "anger",
+    "excited": "joy",
+    "satisfied": "joy",
+}
 
 LABEL_SPACES = {"meld": EMOTIONS, "dailydialog": EMOTIONS, "emowoz": EMOWOZ_EMOTIONS}
 DATASETS = tuple(LABEL_SPACES)
