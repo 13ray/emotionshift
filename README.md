@@ -15,8 +15,8 @@ emotion changes, on MELD and DailyDialog.
 | 2 | TF-IDF + linear SVM | Lixian | ✅ done: [`docs/B1_TFIDF_SVM.md`](docs/B1_TFIDF_SVM.md) |
 | 3 | BiGRU / BiLSTM | Thanh | ✅ done, merged 30 Oct: [`docs/B2_BIGRU_BILSTM.md`](docs/B2_BIGRU_BILSTM.md) |
 | 4 | Transformer, utterance only (RoBERTa-base) | KL Y | ✅ done, merged 30 Oct: [`docs/B3_ROBERTA.md`](docs/B3_ROBERTA.md); trained models on Google Drive |
-| 5 | Context-aware RoBERTa | Anqi | claimed |
-| 6 | ShiftAware (speaker / shift-aware) | open | — |
+| 5 | Context-aware RoBERTa | Anqi | claimed, not submitted yet |
+| 6 | ShiftAware (speaker / shift-aware) | Fpengz | ✅ done, merged 1 Nov: [`results`](reports/shiftaware/results.md), [`selection`](reports/shiftaware/selection.md); notebook and α column still to add |
 | — | Demo, slides and video integration | Lixian | in progress |
 
 Shared pieces already in the repo, for everyone to reuse: data pipeline, shift
