@@ -11,7 +11,7 @@ emotion changes, on MELD and DailyDialog.
 
 | # | Model | Owner | Status |
 |---|---|---|---|
-| 1 | Majority / emotional-inertia / Markov baseline | Ruizhi | implementation and results ready for review: [`docs/B0_BASELINES.md`](docs/B0_BASELINES.md) |
+| 1 | Majority / emotional-inertia / Markov baseline | Ruizhi | ✅ done, merged 2 Nov: [`docs/B0_BASELINES.md`](docs/B0_BASELINES.md), [`results`](reports/b0/results.md) |
 | 2 | TF-IDF + linear SVM | Lixian | ✅ done: [`docs/B1_TFIDF_SVM.md`](docs/B1_TFIDF_SVM.md) |
 | 3 | BiGRU / BiLSTM | Thanh | ✅ done, merged 30 Oct: [`docs/B2_BIGRU_BILSTM.md`](docs/B2_BIGRU_BILSTM.md) |
 | 4 | Transformer, utterance only (RoBERTa-base) | KL Y | ✅ done, merged 30 Oct: [`docs/B3_ROBERTA.md`](docs/B3_ROBERTA.md); trained models on Google Drive |

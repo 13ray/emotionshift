@@ -33,7 +33,7 @@ def aligned_predictions(dataset, split, hashes):
     merged = None
     for name in dict.fromkeys(m for a, b, _ in COMPARISONS for m in [a, b]):
         path = ROOT / "predictions" / f"b0_{name}_{dataset}_{split}_seed0.csv"
-        hashes[str(path.relative_to(ROOT))] = hashlib.sha256(path.read_bytes()).hexdigest()
+        hashes[path.relative_to(ROOT).as_posix()] = hashlib.sha256(path.read_bytes()).hexdigest()
         source = pd.read_csv(path)
         if source.duplicated(KEYS).any():
             raise ValueError(f"Duplicate prediction key: {path}")

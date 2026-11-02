@@ -143,7 +143,7 @@ emowoz,test,DMAGE3546,24,user,5,dissatisfied,stable,neutral,0.29848968386791996,
 emowoz,test,DMAGE3546,26,user,"Yes, I want a taxi",neutral,shift,neutral,0.29848968386791996,neutral
 emowoz,test,DMAGE3546,28,user,Taxi,dissatisfied,shift,dissatisfied,0.5292823477813642,dissatisfied
 emowoz,test,DMAGE3552,0,user,I want a hotel in a moderate price range,neutral,first,,,neutral
-emowoz,test,DMAGE3552,2,user,"I would like to book for Monday, for 1 person and for 4 days",neutral,stable,dissatisfied,0.5292823477813642,dissatisfied
+emowoz,test,DMAGE3552,2,user,"I would like to book for Monday, for 1 person and for 4 days",neutral,stable,neutral,0.29848968386791996,neutral
 emowoz,test,DMAGE3552,4,user,Thursday,neutral,stable,neutral,0.29848968386791996,neutral
 emowoz,test,DMAGE3552,6,user,Thursday for 4 nights,neutral,stable,dissatisfied,0.5292823477813642,dissatisfied
 emowoz,test,DMAGE3552,8,user,Thank you,satisfied,shift,neutral,0.29848968386791996,neutral

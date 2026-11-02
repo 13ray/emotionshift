@@ -14,7 +14,7 @@
   "bootstrap": 1000,
   "donor_C": 0.3,
   "transition_smoothing": "one train-marginal pseudo-count",
-  "seconds": 53.719120800029486,
+  "seconds": 47.913248875003774,
   "results": [
     {
       "dataset": "dailydialog",

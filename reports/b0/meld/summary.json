@@ -14,7 +14,7 @@
   "bootstrap": 1000,
   "donor_C": 0.1,
   "transition_smoothing": "one train-marginal pseudo-count",
-  "seconds": 3.9624439999461174,
+  "seconds": 4.21208533400204,
   "results": [
     {
       "dataset": "meld",

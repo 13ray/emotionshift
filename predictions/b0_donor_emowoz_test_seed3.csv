@@ -142,8 +142,8 @@ emowoz,test,DMAGE3546,22,user,Try one of the others,dissatisfied,neutral,stable,
 emowoz,test,DMAGE3546,24,user,5,dissatisfied,neutral,stable,,b0_donor,3,test,DMAGE3546,5,2.0,dissatisfied,neutral,neutral
 emowoz,test,DMAGE3546,26,user,"Yes, I want a taxi",neutral,dissatisfied,shift,offset,b0_donor,3,test,DMAGE3546,"Yes, I want a taxi",2.0,dissatisfied,dissatisfied,neutral
 emowoz,test,DMAGE3546,28,user,Taxi,dissatisfied,dissatisfied,shift,onset,b0_donor,3,test,DMAGE3546,Taxi,2.0,neutral,dissatisfied,dissatisfied
-emowoz,test,DMAGE3552,0,user,I want a hotel in a moderate price range,neutral,dissatisfied,first,,b0_donor,3,test,DMAGE3552,I want a hotel in a moderate price range,,,dissatisfied,
-emowoz,test,DMAGE3552,2,user,"I would like to book for Monday, for 1 person and for 4 days",neutral,neutral,stable,,b0_donor,3,test,DMAGE3552,"I would like to book for Monday, for 1 person and for 4 days",2.0,neutral,neutral,dissatisfied
+emowoz,test,DMAGE3552,0,user,I want a hotel in a moderate price range,neutral,neutral,first,,b0_donor,3,test,DMAGE3552,I want a hotel in a moderate price range,,,neutral,
+emowoz,test,DMAGE3552,2,user,"I would like to book for Monday, for 1 person and for 4 days",neutral,neutral,stable,,b0_donor,3,test,DMAGE3552,"I would like to book for Monday, for 1 person and for 4 days",2.0,neutral,neutral,neutral
 emowoz,test,DMAGE3552,4,user,Thursday,neutral,dissatisfied,stable,,b0_donor,3,test,DMAGE3552,Thursday,2.0,neutral,dissatisfied,neutral
 emowoz,test,DMAGE3552,6,user,Thursday for 4 nights,neutral,neutral,stable,,b0_donor,3,test,DMAGE3552,Thursday for 4 nights,2.0,neutral,neutral,dissatisfied
 emowoz,test,DMAGE3552,8,user,Thank you,satisfied,satisfied,shift,onset,b0_donor,3,test,DMAGE3552,Thank you ,2.0,neutral,satisfied,neutral

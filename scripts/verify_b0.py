@@ -41,7 +41,6 @@ def release_files():
         ROOT / "configs/b0_baselines.yaml",
         *(ROOT / p for p in CODE),
         ROOT / "docs/B0_BASELINES.md",
-        ROOT / "docs/B0_PR_DESCRIPTION.md",
         ROOT / "notebooks/b0_baselines.ipynb",
     ]
     files += [

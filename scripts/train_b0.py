@@ -262,7 +262,7 @@ def main():
     ]
     pd.DataFrame(rows).to_csv(out / "comparison.csv", index=False)
     hashes = {
-        str(p.relative_to(DATA_ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
+        p.relative_to(DATA_ROOT).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
         for d in datasets
         for p in sorted((DATA_ROOT / d).glob("*"))
         if p.is_file() and p.suffix in {".json", ".csv"}
@@ -278,7 +278,7 @@ def main():
             ).strip(),
             "raw_sha256": hashes,
             "source_sha256": {
-                str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
+                p.relative_to(ROOT).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
                 for p in [Path(__file__), ROOT / "emotionshift/models/b0.py", args.config]
             },
         },

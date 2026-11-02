@@ -26,9 +26,9 @@ Recognition means use five donor seeds; deterministic rules use seed 0.
 | dailydialog / test | inertia_oracle (oracle) | 39.69 ± 0.00 | [35.77, 43.44] | 45.28 | 41.11 |
 | dailydialog / test | markov_oracle (oracle) | 37.61 ± 0.00 | [33.30, 41.87] | 27.29 | 30.91 |
 | emowoz / test | majority | 0.00 ± 0.00 | [0.00, 0.00] | 11.73 | 0.00 |
-| emowoz / test | donor | 75.39 ± 0.00 | [73.50, 77.28] | 52.54 | 73.07 |
-| emowoz / test | inertia_pred | 29.23 ± 0.00 | [27.29, 31.35] | 22.37 | 40.47 |
-| emowoz / test | markov_pred | 9.33 ± 0.00 | [7.26, 11.43] | 17.47 | 15.99 |
+| emowoz / test | donor | 75.40 ± 0.00 | [73.50, 77.28] | 52.55 | 73.08 |
+| emowoz / test | inertia_pred | 29.24 ± 0.00 | [27.29, 31.35] | 22.38 | 40.49 |
+| emowoz / test | markov_pred | 9.34 ± 0.00 | [7.27, 11.43] | 17.47 | 16.00 |
 | emowoz / test | inertia_oracle (oracle) | 32.60 ± 0.00 | [30.32, 35.00] | 26.16 | 46.16 |
 | emowoz / test | markov_oracle (oracle) | 11.25 ± 0.00 | [8.70, 14.03] | 18.73 | 19.96 |
 
@@ -68,9 +68,9 @@ is better). These are point estimates, without forecast confidence intervals.
 
 ## Runtime and verification
 
-- meld: 4.0 seconds including dev selection, fitting, recognition CIs and exports.
-- dailydialog: 53.7 seconds including dev selection, fitting, recognition CIs and exports.
-- emowoz: 36.1 seconds including dev selection, fitting, recognition CIs and exports.
+- meld: 4.2 seconds including dev selection, fitting, recognition CIs and exports.
+- dailydialog: 47.9 seconds including dev selection, fitting, recognition CIs and exports.
+- emowoz: 27.2 seconds including dev selection, fitting, recognition CIs and exports.
 
 CPU run, Python 3.12. The artifact audit recomputed all 72 prediction
 files' recognition metrics and verified source identity and CSV schema.

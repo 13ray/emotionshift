@@ -27,9 +27,9 @@ emowoz,majority,stable,weighted_f1_no_neutral,0.0
 emowoz,majority,shift,weighted_f1_no_neutral,0.0
 emowoz,donor,stable,weighted_f1_no_neutral,0.6620371509564753
 emowoz,donor,shift,weighted_f1_no_neutral,0.8087565288687475
-emowoz,inertia_pred,stable,weighted_f1_no_neutral,0.6585785946947816
+emowoz,inertia_pred,stable,weighted_f1_no_neutral,0.6589257882390837
 emowoz,inertia_pred,shift,weighted_f1_no_neutral,0.09695170385678088
-emowoz,markov_pred,stable,weighted_f1_no_neutral,0.20033067506224905
+emowoz,markov_pred,stable,weighted_f1_no_neutral,0.20067786860655107
 emowoz,markov_pred,shift,weighted_f1_no_neutral,0.052299347301284535
 emowoz,inertia_oracle,stable,weighted_f1_no_neutral,1.0
 emowoz,inertia_oracle,shift,weighted_f1_no_neutral,0.0

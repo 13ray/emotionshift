@@ -1,11 +1,11 @@
 dataset,split,seed,model,n,base_rate,auroc,auprc,brier,scope
-emowoz,test,0,markov_pred,7534,0.3517387841783913,0.5692059941588243,0.4076975979527879,0.2281043764024674,same-speaker non-first labelled turns; no current text input
+emowoz,test,0,markov_pred,7534,0.3517387841783913,0.5692853831533077,0.4077214672971694,0.2280790188616793,same-speaker non-first labelled turns; no current text input
 emowoz,test,0,markov_oracle,7534,0.3517387841783913,0.6079091913525875,0.46316859865598803,0.21068268946299318,same-speaker non-first labelled turns; no current text input
-emowoz,test,1,markov_pred,7534,0.3517387841783913,0.5692059941588243,0.4076975979527879,0.2281043764024674,same-speaker non-first labelled turns; no current text input
+emowoz,test,1,markov_pred,7534,0.3517387841783913,0.5692853831533077,0.4077214672971694,0.2280790188616793,same-speaker non-first labelled turns; no current text input
 emowoz,test,1,markov_oracle,7534,0.3517387841783913,0.6079091913525875,0.46316859865598803,0.21068268946299318,same-speaker non-first labelled turns; no current text input
-emowoz,test,2,markov_pred,7534,0.3517387841783913,0.5692059941588243,0.4076975979527879,0.2281043764024674,same-speaker non-first labelled turns; no current text input
+emowoz,test,2,markov_pred,7534,0.3517387841783913,0.5692853831533077,0.4077214672971694,0.2280790188616793,same-speaker non-first labelled turns; no current text input
 emowoz,test,2,markov_oracle,7534,0.3517387841783913,0.6079091913525875,0.46316859865598803,0.21068268946299318,same-speaker non-first labelled turns; no current text input
-emowoz,test,3,markov_pred,7534,0.3517387841783913,0.5692059941588243,0.4076975979527879,0.2281043764024674,same-speaker non-first labelled turns; no current text input
+emowoz,test,3,markov_pred,7534,0.3517387841783913,0.5692853831533077,0.4077214672971694,0.2280790188616793,same-speaker non-first labelled turns; no current text input
 emowoz,test,3,markov_oracle,7534,0.3517387841783913,0.6079091913525875,0.46316859865598803,0.21068268946299318,same-speaker non-first labelled turns; no current text input
-emowoz,test,4,markov_pred,7534,0.3517387841783913,0.5692059941588243,0.4076975979527879,0.2281043764024674,same-speaker non-first labelled turns; no current text input
+emowoz,test,4,markov_pred,7534,0.3517387841783913,0.5692853831533077,0.4077214672971694,0.2280790188616793,same-speaker non-first labelled turns; no current text input
 emowoz,test,4,markov_oracle,7534,0.3517387841783913,0.6079091913525875,0.46316859865598803,0.21068268946299318,same-speaker non-first labelled turns; no current text input

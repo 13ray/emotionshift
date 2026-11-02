@@ -93,7 +93,7 @@ def main():
                 source = pd.read_csv(path)
                 if source.duplicated(KEYS).any() or not source.pred.isin(labels).all():
                     raise ValueError(f"Invalid prediction export: {path}")
-                hashes[str(path.relative_to(ROOT))] = hashlib.sha256(path.read_bytes()).hexdigest()
+                hashes[path.relative_to(ROOT).as_posix()] = hashlib.sha256(path.read_bytes()).hexdigest()
                 if joined is None:
                     joined = source[[*KEYS, "emotion", "stratum", "pred"]].rename(
                         columns={"pred": name}
@@ -146,7 +146,7 @@ def main():
                     }
                 )
         for path in [matrix_path, count_path]:
-            hashes[str(path.relative_to(ROOT))] = hashlib.sha256(path.read_bytes()).hexdigest()
+            hashes[path.relative_to(ROOT).as_posix()] = hashlib.sha256(path.read_bytes()).hexdigest()
     summary = pd.DataFrame(summary)
     distribution = pd.DataFrame(distributions)
     effect = pd.DataFrame(effects)

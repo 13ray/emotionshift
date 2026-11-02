@@ -18,10 +18,10 @@ These are seed-0 checkpoint comparisons, not differences between five-seed means
 | dailydialog / test_dedup | donor - inertia_pred | +31.35 | [+28.14, +34.49] | above_zero |
 | dailydialog / test_dedup | markov_pred - inertia_pred | -0.47 | [-1.92, +0.84] | includes_zero |
 | dailydialog / test_dedup | inertia_oracle - inertia_pred [oracle diagnostic] | +17.34 | [+14.01, +20.64] | above_zero |
-| emowoz / test | inertia_pred - majority | +29.23 | [+27.29, +31.35] | above_zero |
+| emowoz / test | inertia_pred - majority | +29.24 | [+27.29, +31.35] | above_zero |
 | emowoz / test | donor - inertia_pred | +46.16 | [+43.51, +48.75] | above_zero |
 | emowoz / test | markov_pred - inertia_pred | -19.90 | [-21.69, -18.12] | below_zero |
-| emowoz / test | inertia_oracle - inertia_pred [oracle diagnostic] | +3.37 | [+1.66, +5.08] | above_zero |
+| emowoz / test | inertia_oracle - inertia_pred [oracle diagnostic] | +3.36 | [+1.66, +5.07] | above_zero |
 
 ## Interpretation and limits
 
