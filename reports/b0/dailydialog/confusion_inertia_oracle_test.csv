@@ -1,0 +1,8 @@
+,pred_neutral,pred_joy,pred_surprise,pred_anger,pred_sadness,pred_disgust,pred_fear
+gold_neutral,5958,224,65,22,30,16,6
+gold_joy,667,330,18,0,4,0,0
+gold_surprise,94,11,8,2,1,0,0
+gold_anger,53,1,2,60,0,1,1
+gold_sadness,64,3,3,1,31,0,0
+gold_disgust,24,0,2,1,0,20,0
+gold_fear,11,0,0,0,1,0,5

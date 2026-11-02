@@ -1,0 +1,7 @@
+dataset,split,dialogue_id,turn,speaker,text,emotion,turn_gap,prev_emotion,stratum,shift_type,donor_pred,history_pred,inertia_pred,inertia_oracle,explanation
+illustration,test,0,0,A,"Great, we got the tickets!",joy,,,first,,anger,,neutral,neutral,First A turn: train-majority neutral; current donor anger is saved for A's next turn.
+illustration,test,0,1,B,Okay.,neutral,,,first,,neutral,,neutral,neutral,First B turn: independent B history; A's prediction is not copied.
+illustration,test,0,2,A,I am still so happy!,joy,2.0,joy,stable,,joy,anger,anger,joy,"Stable A: previous donor anger was wrong and is copied now, although current donor joy is correct."
+illustration,test,0,3,B,"Wonderful, I can join you!",joy,2.0,neutral,shift,onset,joy,neutral,neutral,neutral,B shifts: previous B donor neutral is copied; intervening A predictions do not enter B history.
+illustration,test,0,4,A,"Wait, you cancelled them? I am furious!",anger,2.0,joy,shift,valence_flip,anger,joy,joy,joy,"A shifts: previous donor joy was correct, but is now stale; even gold-history oracle misses the shift."
+illustration,test,0,5,A,I am still angry about it.,anger,1.0,anger,stable,,anger,anger,anger,anger,Stable A: copy the previous donor anger correctly. The earlier copied output joy is NOT fed back.

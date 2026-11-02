@@ -1,0 +1,38 @@
+{
+  "prediction_files_checked": 72,
+  "executed_notebook_code_cells": 11,
+  "paired_contrasts_checked": 48,
+  "english_release_no_chinese": true,
+  "training_inputs_and_code_hashes_verified": true,
+  "git_text_hash_policy": "LF/CRLF-equivalent text accepted; raw downloads require exact byte hashes",
+  "paired_and_transition_provenance_verified": true,
+  "all_release_files_below_50_mb": true,
+  "figure_dimensions": {
+    "reports\\b0\\figures\\headline_comparison.png": [
+      2400,
+      800
+    ],
+    "reports\\b0\\figures\\shift_vs_stable.png": [
+      2400,
+      800
+    ],
+    "reports\\b0\\paired\\headline_differences.png": [
+      2585,
+      825
+    ],
+    "reports\\b0\\transitions\\dailydialog_transition.png": [
+      1763,
+      1460
+    ],
+    "reports\\b0\\transitions\\emowoz_transition.png": [
+      1773,
+      1460
+    ],
+    "reports\\b0\\transitions\\meld_transition.png": [
+      1749,
+      1460
+    ]
+  },
+  "pytest": "70 passed, 5 skipped in 11.50s",
+  "ruff": "All checks passed!"
+}

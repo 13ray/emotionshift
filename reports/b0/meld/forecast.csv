@@ -1,0 +1,11 @@
+dataset,split,seed,model,n,base_rate,auroc,auprc,brier,scope
+meld,test,0,markov_pred,1864,0.5380901287553648,0.5579318953707981,0.5697853694189551,0.2553561405935498,same-speaker non-first labelled turns; no current text input
+meld,test,0,markov_oracle,1864,0.5380901287553648,0.6633021956198767,0.6729178512478784,0.2265534643196667,same-speaker non-first labelled turns; no current text input
+meld,test,1,markov_pred,1864,0.5380901287553648,0.5579318953707981,0.5697853694189551,0.2553561405935498,same-speaker non-first labelled turns; no current text input
+meld,test,1,markov_oracle,1864,0.5380901287553648,0.6633021956198767,0.6729178512478784,0.2265534643196667,same-speaker non-first labelled turns; no current text input
+meld,test,2,markov_pred,1864,0.5380901287553648,0.5579318953707981,0.5697853694189551,0.2553561405935498,same-speaker non-first labelled turns; no current text input
+meld,test,2,markov_oracle,1864,0.5380901287553648,0.6633021956198767,0.6729178512478784,0.2265534643196667,same-speaker non-first labelled turns; no current text input
+meld,test,3,markov_pred,1864,0.5380901287553648,0.5579318953707981,0.5697853694189551,0.2553561405935498,same-speaker non-first labelled turns; no current text input
+meld,test,3,markov_oracle,1864,0.5380901287553648,0.6633021956198767,0.6729178512478784,0.2265534643196667,same-speaker non-first labelled turns; no current text input
+meld,test,4,markov_pred,1864,0.5380901287553648,0.5579318953707981,0.5697853694189551,0.2553561405935498,same-speaker non-first labelled turns; no current text input
+meld,test,4,markov_oracle,1864,0.5380901287553648,0.6633021956198767,0.6729178512478784,0.2265534643196667,same-speaker non-first labelled turns; no current text input

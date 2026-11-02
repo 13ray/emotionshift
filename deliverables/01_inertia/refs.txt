@@ -1,0 +1,19 @@
+References (APA-style source list)
+
+Poria, S., Hazarika, D., Majumder, N., Naik, G., Cambria, E., & Mihalcea, R. (2019).
+MELD: A multimodal multi-party dataset for emotion recognition in conversations.
+Proceedings of ACL, 527–536. https://aclanthology.org/P19-1050/
+
+Li, Y., Su, H., Shen, X., Li, W., Cao, Z., & Niu, S. (2017).
+DailyDialog: A manually labelled multi-turn dialogue dataset.
+Proceedings of IJCNLP, 986–995. https://aclanthology.org/I17-1099/
+
+Feng, S., Lubis, N., Geishauser, C., Lin, H.-C., Heck, M., van Niekerk, C., & Gašić, M. (2022).
+EmoWOZ: A large-scale corpus and labelling scheme for emotion recognition in
+task-oriented dialogue systems. Proceedings of LREC, 4096–4113.
+https://aclanthology.org/2022.lrec-1.436/
+
+Team implementation references: docs/proposal.md (B0 protocol),
+notebooks/02_quick_baselines.ipynb (lagged predicted-history convention),
+emotionshift/models/tfidf.py (supporting recognizer),
+emotionshift/eval/metrics.py (scoring and dialogue resampling).

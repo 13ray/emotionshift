@@ -1,0 +1,29 @@
+{
+  "seed": 0,
+  "training_reconstruction_verified": true,
+  "source_sha256": {
+    "predictions\\b0_majority_meld_test_seed0.csv": "e7f55a9b8cfe743eb826dfa37c42c9fdc0c15ed526180af6a7b85c9e34e1add3",
+    "predictions\\b0_donor_meld_test_seed0.csv": "8d6bfa6db278539253f7c0bf48ca29ef6d97db249685b8a723b61baba641ef31",
+    "predictions\\b0_inertia_pred_meld_test_seed0.csv": "3a8a0b4d508bd7131c8913f7b4a8dc5370f08a7af8ade717238942c166d6ffd5",
+    "predictions\\b0_markov_pred_meld_test_seed0.csv": "ebefac60ef26464e3b2305ce49ecb6de7c18868cc06e49a417a790debb4d344e",
+    "reports\\b0\\meld\\transition.csv": "e1c92069f26a3757051f846e36543292e241e40f0a4f1ea6edd8b4cef9d001a2",
+    "reports\\b0\\meld\\transition_counts.csv": "19ba20c05fbb52d0370779805a53cd24de27df537befde36f165e454416515bc",
+    "predictions\\b0_majority_dailydialog_test_dedup_seed0.csv": "e2536459ca0c7fd8f2122823215a2bb411b8fd510c6ff4bfb89a75d098a7f568",
+    "predictions\\b0_donor_dailydialog_test_dedup_seed0.csv": "3bea7b351aa2af6ae2cb52bc878ee76c9237af79e5333c8c4a57cbc5b84a81e8",
+    "predictions\\b0_inertia_pred_dailydialog_test_dedup_seed0.csv": "68374d09be1dda5004f4fbc43772eb5592dc71095d814681093834ca1d751010",
+    "predictions\\b0_markov_pred_dailydialog_test_dedup_seed0.csv": "47d63b48444ea4e2f58c5dd096b34fdc6b305c208c8bab58581234a5db13b919",
+    "predictions\\b0_majority_dailydialog_test_seed0.csv": "89ff12c9c9082ae964d8ff752330228998972364467fff8d56b903e3b958b956",
+    "predictions\\b0_donor_dailydialog_test_seed0.csv": "0f7f9fd051cd1f719248aa6ea407b165b47849ebc92aa2b3b8d2e545fbbd0a53",
+    "predictions\\b0_inertia_pred_dailydialog_test_seed0.csv": "cbc723e63e03e184fcbf93f8263bc41eca45da91335a253fb7d885cbea39b097",
+    "predictions\\b0_markov_pred_dailydialog_test_seed0.csv": "3944763f6fa0fa5a8bedd0f5727dbd7bbc7a9eefe3234c8b52629fcb4dc1fa64",
+    "reports\\b0\\dailydialog\\transition.csv": "c50b05ae94bdb8c80d1c7bd65ce50b21043167812f674035d3f80e048754b0e9",
+    "reports\\b0\\dailydialog\\transition_counts.csv": "669afc8e33657ab75a34bd1fdf91441e0e9944d36cb5b855feb08c6e362843fe",
+    "predictions\\b0_majority_emowoz_test_seed0.csv": "8cffa35bffb50458d60dd488ca70960d17e90e6b6461be081191894dca7c262d",
+    "predictions\\b0_donor_emowoz_test_seed0.csv": "462e7cb8630ba6fbd9730d135d6417e3c745a1b6bc14af500cc4663e33ee3dd7",
+    "predictions\\b0_inertia_pred_emowoz_test_seed0.csv": "1d072f6a60ac0cc16df017e39248ccb1eb4dc81c34a0e19f0503de188cfe824b",
+    "predictions\\b0_markov_pred_emowoz_test_seed0.csv": "5d62b76657fb8badb656f42fb8d715000c876f84b073ff99ce5243860625f010",
+    "reports\\b0\\emowoz\\transition.csv": "ad0cbc14736bc56e2663f45c74d641738851f2a0913887fddf9a4e75a45d149e",
+    "reports\\b0\\emowoz\\transition_counts.csv": "1f72a3d1015d35e3f18ae9313fce91187ef2fe2e2ab7b6b8fdf23f5ad0ce9c48"
+  },
+  "analysis_sha256": "39b1425492378bd4dc4620d80190fe8321fbbc536575a67eaefd93754f4ca494"
+}

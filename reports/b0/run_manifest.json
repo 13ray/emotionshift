@@ -1,0 +1,60 @@
+{
+  "config": {
+    "datasets": [
+      "meld",
+      "dailydialog",
+      "emowoz"
+    ],
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "bootstrap": 1000,
+    "test_splits": {
+      "meld": [
+        "test"
+      ],
+      "dailydialog": [
+        "test_dedup",
+        "test"
+      ],
+      "emowoz": [
+        "test"
+      ]
+    },
+    "donor_C": [
+      0.1,
+      0.3,
+      1.0
+    ]
+  },
+  "datasets": [
+    "meld",
+    "dailydialog",
+    "emowoz"
+  ],
+  "python": "3.12.10",
+  "revision": "a70bb978f68b88e51157db0f57cd522d924676bd",
+  "raw_sha256": {
+    "meld\\dev_sent_emo.csv": "2e89c6f8aa182d6f62f8c6331aece905ac7273ca4999660bfb5213e1d0370c1c",
+    "meld\\MELD_test_efr.json": "588aae058e0642ef8381dbc166c8d5d332e8ccd385307e7e8cc22fff93d915cb",
+    "meld\\MELD_train_efr.json": "a54afe2f7e1039671098d084e42e14d42d82261eb9134dd4985f7d27d53e040d",
+    "meld\\MELD_val_efr.json": "fb0baf172f178e92843853189a48866438342c7f4740845627fdfe2f66ce5a63",
+    "meld\\test_sent_emo.csv": "8d37103938f7067600839fe29d5a114a6cd1bcdafb75bec101e06464c5006888",
+    "meld\\train_sent_emo.csv": "d2fa2d6529cf03cac2989efec05c9b27d8fd2f4c8fc5974c7ae88aa537fa02db",
+    "dailydialog\\test.json": "9fae2df356dda7ddb12f388cc38e47befc7b24c0e554b81e55068a6d1429884f",
+    "dailydialog\\train.json": "8142b924bc9e382c54f172b0a8fddf5698f2c9d47479219ed11b6463aedab0b8",
+    "dailydialog\\valid.json": "0a7678ca703f5aa716519a65087a0a0757508f77e2335c823852a1298eb436b5",
+    "emowoz\\data-split.json": "15a4060a7dd005585af4f64905392724e61d921e74404cc5074fca4069c05c91",
+    "emowoz\\emowoz-dialmage.json": "1035f0cf408a513192a08e7e830d2aac50dc74e13c424830b6cd986328a75160",
+    "emowoz\\emowoz-multiwoz.json": "b1805796d10b260ce6d5a18d9259dea7ea2ce58bf8516fa53ec00349e8e0ec58"
+  },
+  "source_sha256": {
+    "scripts\\train_b0.py": "148e36f969f12326f7ebce93cd04fd68f9fa5c83a34414b382f6221a8e5cbc83",
+    "emotionshift\\models\\b0.py": "0014e4d3e4b149d4c2a97f15549c1787b23e5725c7e93c0b9c8218b2467aef65",
+    "configs\\b0_baselines.yaml": "2083a71788224dde8c5174dada35618f6369466e3d1e42eb582664327279f372"
+  }
+}

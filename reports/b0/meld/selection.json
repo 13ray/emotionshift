@@ -1,0 +1,7 @@
+{
+  "selected_C": 0.1,
+  "headline": "weighted_f1",
+  "selected_on": "dev only",
+  "features": "word 1-2grams",
+  "class_weight": "balanced"
+}
