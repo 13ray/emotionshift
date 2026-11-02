@@ -1,0 +1,10 @@
+Draft for personal review; include only work you have reviewed and can explain.
+
+Implemented B0 majority, predicted-history inertia and Markov transition floors.
+Used the shared pipeline on MELD, DailyDialog and native-label EmoWOZ, with
+dev-only donor selection and explicit separation of gold-history oracle references.
+Prepared reproducible prediction exports, stratified metrics, dialogue-bootstrap
+intervals, forecasting results, an executed notebook and source figures.
+Added causal-history tests and an audit of all 72 prediction files.
+Implementation and preparation used AI assistance; shared loaders, the SVM
+recognizer and evaluation helpers were supplied by the team and are reused.

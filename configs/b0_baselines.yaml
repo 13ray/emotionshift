@@ -1,0 +1,10 @@
+datasets: [meld, dailydialog, emowoz]
+seeds: [0, 1, 2, 3, 4]
+bootstrap: 1000
+test_splits:
+  meld: [test]
+  dailydialog: [test_dedup, test]
+  emowoz: [test]
+# Fixed compact grid, selected on dev headline metric only, separately per dataset.
+# Donor is a supporting recognizer, not a re-run/replacement of the B1 workstream.
+donor_C: [0.1, 0.3, 1.0]

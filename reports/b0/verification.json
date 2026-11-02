@@ -1,0 +1,10 @@
+{
+  "prediction_files_checked": 72,
+  "checks": [
+    "original 12 column order",
+    "source row identity",
+    "native label space",
+    "unique keys",
+    "stored metrics recomputed"
+  ]
+}

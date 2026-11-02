@@ -1,0 +1,21 @@
+dataset,split,seed,model,n,base_rate,auroc,auprc,brier,scope
+dailydialog,test_dedup,0,markov_pred,5237,0.1798739736490357,0.5884205947269946,0.2498607434199596,0.14814588904220002,same-speaker non-first labelled turns; no current text input
+dailydialog,test_dedup,0,markov_oracle,5237,0.1798739736490357,0.6578086650897578,0.3592802731720147,0.12783832092194714,same-speaker non-first labelled turns; no current text input
+dailydialog,test,0,markov_pred,5740,0.1799651567944251,0.5813359888497925,0.24203905740980575,0.15078873661443243,same-speaker non-first labelled turns; no current text input
+dailydialog,test,0,markov_oracle,5740,0.1799651567944251,0.6568151160420794,0.35617471869715456,0.12841071183595543,same-speaker non-first labelled turns; no current text input
+dailydialog,test_dedup,1,markov_pred,5237,0.1798739736490357,0.5884205947269946,0.2498607434199596,0.14814588904220002,same-speaker non-first labelled turns; no current text input
+dailydialog,test_dedup,1,markov_oracle,5237,0.1798739736490357,0.6578086650897578,0.3592802731720147,0.12783832092194714,same-speaker non-first labelled turns; no current text input
+dailydialog,test,1,markov_pred,5740,0.1799651567944251,0.5813359888497925,0.24203905740980575,0.15078873661443243,same-speaker non-first labelled turns; no current text input
+dailydialog,test,1,markov_oracle,5740,0.1799651567944251,0.6568151160420794,0.35617471869715456,0.12841071183595543,same-speaker non-first labelled turns; no current text input
+dailydialog,test_dedup,2,markov_pred,5237,0.1798739736490357,0.5884205947269946,0.2498607434199596,0.14814588904220002,same-speaker non-first labelled turns; no current text input
+dailydialog,test_dedup,2,markov_oracle,5237,0.1798739736490357,0.6578086650897578,0.3592802731720147,0.12783832092194714,same-speaker non-first labelled turns; no current text input
+dailydialog,test,2,markov_pred,5740,0.1799651567944251,0.5813359888497925,0.24203905740980575,0.15078873661443243,same-speaker non-first labelled turns; no current text input
+dailydialog,test,2,markov_oracle,5740,0.1799651567944251,0.6568151160420794,0.35617471869715456,0.12841071183595543,same-speaker non-first labelled turns; no current text input
+dailydialog,test_dedup,3,markov_pred,5237,0.1798739736490357,0.5884205947269946,0.2498607434199596,0.14814588904220002,same-speaker non-first labelled turns; no current text input
+dailydialog,test_dedup,3,markov_oracle,5237,0.1798739736490357,0.6578086650897578,0.3592802731720147,0.12783832092194714,same-speaker non-first labelled turns; no current text input
+dailydialog,test,3,markov_pred,5740,0.1799651567944251,0.5813359888497925,0.24203905740980575,0.15078873661443243,same-speaker non-first labelled turns; no current text input
+dailydialog,test,3,markov_oracle,5740,0.1799651567944251,0.6568151160420794,0.35617471869715456,0.12841071183595543,same-speaker non-first labelled turns; no current text input
+dailydialog,test_dedup,4,markov_pred,5237,0.1798739736490357,0.5884205947269946,0.2498607434199596,0.14814588904220002,same-speaker non-first labelled turns; no current text input
+dailydialog,test_dedup,4,markov_oracle,5237,0.1798739736490357,0.6578086650897578,0.3592802731720147,0.12783832092194714,same-speaker non-first labelled turns; no current text input
+dailydialog,test,4,markov_pred,5740,0.1799651567944251,0.5813359888497925,0.24203905740980575,0.15078873661443243,same-speaker non-first labelled turns; no current text input
+dailydialog,test,4,markov_oracle,5740,0.1799651567944251,0.6568151160420794,0.35617471869715456,0.12841071183595543,same-speaker non-first labelled turns; no current text input

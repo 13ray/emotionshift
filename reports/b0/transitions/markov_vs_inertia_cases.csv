@@ -1,0 +1,13 @@
+dataset,split,group,n,changed_predictions,changed_to_neutral,markov_correct_inertia_wrong,inertia_correct_markov_wrong,both_correct,both_wrong
+meld,test,all,2610,727,727,282,136,968,1224
+meld,test,stable,861,287,287,98,95,454,214
+meld,test,shift,1003,440,440,184,41,135,643
+dailydialog,test_dedup,all,7019,237,237,158,30,5453,1378
+dailydialog,test_dedup,stable,4295,139,139,97,23,3755,420
+dailydialog,test_dedup,shift,942,98,98,61,7,176,698
+dailydialog,test,all,7740,272,272,187,35,5995,1523
+dailydialog,test,stable,4707,165,165,119,26,4094,468
+dailydialog,test,shift,1033,107,107,68,9,196,760
+emowoz,test,all,8634,1142,1142,642,390,5367,2235
+emowoz,test,stable,4884,547,547,193,334,3986,371
+emowoz,test,shift,2650,595,595,449,56,317,1828
