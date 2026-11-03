@@ -1,0 +1,33 @@
+{
+  "model": "shiftaware (architecture of configs/shiftaware.yaml)",
+  "note": "untrained weights; latency and size do not depend on weight values",
+  "efficiency": {
+    "parameters": 127217569,
+    "parameters_by_part": {
+      "encoder": 124645632,
+      "dynamics": 2571937
+    },
+    "model_file_mb": 508.96,
+    "latency_one_utterance": {
+      "what": "label one new turn by re-running its dialogue prefix (live demo)",
+      "n": 60,
+      "median_ms": 50.11625000042841,
+      "p95_ms": 133.6516680923523
+    },
+    "latency_amortized": {
+      "what": "whole dialogue in one call, divided by its turns (offline)",
+      "n": 60,
+      "median_ms": 10.137460419597726,
+      "p95_ms": 21.663807258300917
+    },
+    "threads": 4,
+    "torch": "2.15.0",
+    "machine": {
+      "platform": "macOS-27.0.1-arm64-arm-64bit",
+      "processor": "arm",
+      "cpu_count": 8,
+      "python": "3.12.12"
+    },
+    "note": "untrained weights, same architecture; one new turn incl. re-encoding its prefix"
+  }
+}
