@@ -68,8 +68,10 @@ ENTRIES = [
     Entry("b2_bigru", "BiGRU", 3, _same("b2_bigru")),
     Entry("b2_bilstm", "BiLSTM", 3, _same("b2_bilstm")),
     Entry("b3", "RoBERTa-base, utterance only", 4, _same("b3")),
-    # Workstream 5 has not submitted yet; rename the prefix if its files differ.
+    # Window k chosen on MELD dev, see reports/b4/selection.json.
     Entry("b4", "RoBERTa-base with context", 5, _same("b4")),
+    # B4+ (fallback improvement R3) was trained on MELD only.
+    Entry("b4plus", "RoBERTa-base with context, class-weighted (B4+)", 5, {"meld": "b4plus"}),
     # Variants chosen on dev only, see reports/shiftaware/selection.md.
     Entry(
         "shiftaware",
@@ -86,7 +88,8 @@ BY_KEY = {e.key: e for e in ENTRIES}
 
 # (a, b, pre-registered target). Differences are b - a.
 PAIRS = [
-    ("b3", "b4", "R3: macro-F1 on MELD, CI excludes 0; H1: gain on stable > shift"),
+    ("b3", "b4", "H1: gain on stable > shift"),
+    ("b3", "b4plus", "R3: macro-F1 on MELD, CI excludes 0"),
     ("b4", "shiftaware", "H3: +2 on MELD shift turns, CI excludes 0, no stable loss"),
     ("b3", "shiftaware", ""),
     ("b1", "b3", ""),
@@ -192,6 +195,8 @@ def load(dataset: str, split: str) -> Loaded:
 
     preds = {}
     for entry in ENTRIES:
+        if dataset not in entry.prefix:
+            continue
         seeds, codes = [], []
         for path in _files(entry.prefix[dataset], dataset, split):
             df = pd.read_csv(path, usecols=[*KEYS, "emotion", "pred"], dtype={"dialogue_id": str})
@@ -232,6 +237,8 @@ def tables(data: dict[str, Loaded], n_boot: int, n_perm: int, seed: int = 0):
         groups = dict(_groups(loaded.base))
         counts = {}  # (key, group) -> per-dialogue counts
         for entry in ENTRIES:
+            if dataset not in entry.prefix:
+                continue
             if entry.key not in loaded.preds:
                 e1.append({"dataset": dataset, "model": entry.key, "seeds": 0})
                 continue
@@ -400,7 +407,7 @@ def _status(e1, e2, paired) -> list[str]:
         pair("b4", "shiftaware", "stable", "weighted_f1"),
     )
     proxy = pair("b3", "shiftaware", "shift", "weighted_f1")
-    r3 = pair("b3", "b4", "all", "macro_f1")
+    r3 = pair("b3", "b4plus", "all", "macro_f1")
     h1s, h1t = pair("b3", "b4", "stable", "weighted_f1"), pair("b3", "b4", "shift", "weighted_f1")
     main = e1[e1.model.isin([e.key for e in ENTRIES if not e.reference]) & (e1.seeds > 0)]
     lines = [
@@ -414,11 +421,11 @@ def _status(e1, e2, paired) -> list[str]:
             else ("met" if h3_stable["ci_high"] > 0 else "not met")
         )
         + " |",
-        f"| H3 proxy until #5 arrives: ShiftAware - RoBERTa utterance-only, MELD shift | {_diff(proxy) if proxy is not None else TBD} | descriptive |",
+        f"| H3 reference: ShiftAware - RoBERTa utterance-only, MELD shift | {_diff(proxy) if proxy is not None else TBD} | descriptive |",
         f"| R2: context RoBERTa ≥ 62 weighted-F1 on MELD | {TBD if pd.isna(b4_wf1) else f'{b4_wf1:.2f}'} | "
         + (TBD if pd.isna(b4_wf1) else ("met" if b4_wf1 >= 62 else "not met"))
         + " |",
-        f"| R3: context RoBERTa - utterance-only, MELD macro-F1, CI > 0 | {_diff(r3) if r3 is not None else TBD} | {met(r3)} |",
+        f"| R3: tuned context RoBERTa (B4+) - utterance-only, MELD macro-F1, CI > 0 | {_diff(r3) if r3 is not None else TBD} | {met(r3)} |",
         f"| H1: context gain on stable vs shift turns (MELD) | stable {_diff(h1s) if h1s is not None else TBD}; shift {_diff(h1t) if h1t is not None else TBD} | "
         + (
             TBD
@@ -460,6 +467,8 @@ def write_report(e1, e2, paired, eff, n_boot, n_perm):
             "|---|---|---|---|---|",
         ]
         for entry in ENTRIES:
+            if dataset not in entry.prefix:
+                continue
             row = e1[(e1.dataset == dataset) & (e1.model == entry.key)].iloc[0]
             if not row["seeds"]:
                 lines.append(f"| {entry.workstream} | {entry.name} | 0 | {TBD} | {TBD} |")
@@ -484,6 +493,8 @@ def write_report(e1, e2, paired, eff, n_boot, n_perm):
             "|---" * (len(groups) + 1) + "|",
         ]
         for entry in ENTRIES:
+            if dataset not in entry.prefix:
+                continue
             rows = sub[sub.model == entry.key].set_index("group")
             if rows.empty:
                 lines.append(f"| {entry.name} | " + " | ".join(TBD for _ in groups) + " |")
