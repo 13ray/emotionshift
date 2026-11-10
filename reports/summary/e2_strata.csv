@@ -170,6 +170,15 @@ dailydialog,b3,shift:offset,329,,,13.7167,0.0387,0.0000,0.0000
 dailydialog,b3,shift:surprise,38,,,25.8528,0.8654,59.4280,2.8482
 dailydialog,b3,shift:within_negative,4,,,19.5238,11.9523,48.1429,18.1519
 dailydialog,b3,shift:valence_flip,6,,,11.4286,0.0000,50.0000,0.0000
+dailydialog,b4,all,7019,,,47.4486,1.9905,59.6093,0.3429
+dailydialog,b4,first,1782,,,50.5397,2.1143,57.0505,1.1685
+dailydialog,b4,stable,4295,,,37.7337,1.6763,45.2328,0.9220
+dailydialog,b4,shift,942,,,47.1710,3.9252,74.0571,0.7849
+dailydialog,b4,shift:onset,565,,,39.1644,4.4370,79.3689,0.9332
+dailydialog,b4,shift:offset,329,,,13.0338,0.0939,0.0000,0.0000
+dailydialog,b4,shift:surprise,38,,,31.2847,3.9715,62.4893,2.8679
+dailydialog,b4,shift:within_negative,4,,,9.0476,3.1044,31.8095,5.0215
+dailydialog,b4,shift:valence_flip,6,,,11.4286,0.0000,50.0000,0.0000
 dailydialog,shiftaware,all,7019,,,45.0877,5.3370,57.3879,0.7073
 dailydialog,shiftaware,first,1782,,,44.7296,6.1273,55.0237,1.1092
 dailydialog,shiftaware,stable,4295,,,36.3578,4.7840,44.9976,1.3698
