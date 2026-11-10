@@ -46,10 +46,10 @@ Headline: MELD weighted-F1, DailyDialog micro-F1 without neutral.
 | 3 | BiGRU | 5 | 48.95 ± 0.57 [46.31, 51.52] | 40.65 ± 1.74 |
 | 3 | BiLSTM | 5 | 48.28 ± 0.87 [45.63, 50.73] | 38.83 ± 3.21 |
 | 4 | RoBERTa-base, utterance only | 5 | 55.34 ± 0.39 [52.33, 57.95] | 39.69 ± 1.09 |
-| 5 | RoBERTa-base with context | 0 | [TBD] | [TBD] |
-| 6 | ShiftAware | 5 | 57.39 ± 0.71 [54.69, 60.00] | 45.09 ± 5.34 |
-| 1 | Inertia (gold history, reference) | 1 | 39.02 [34.97, 43.12] | 45.15 |
-| 1 | Markov (gold history, reference) | 1 | 36.84 [32.53, 41.09] | 26.98 |
+| 5 | RoBERTa-base with context | 5 | 59.61 ± 0.34 [56.74, 62.24] | 47.45 ± 1.99 |
+| 6 | ShiftAware | 5 | 57.39 ± 0.71 [54.73, 60.03] | 45.09 ± 5.34 |
+| 1 | Inertia (gold history, reference) | 1 | 39.02 [35.16, 42.94] | 45.15 |
+| 1 | Markov (gold history, reference) | 1 | 36.84 [32.34, 41.50] | 26.98 |
 
 ## E2 strata (headline metric)
 
@@ -81,7 +81,7 @@ Headline: MELD weighted-F1, DailyDialog micro-F1 without neutral.
 | BiGRU | 48.95 ± 0.57 | 44.22 ± 0.99 | 30.17 ± 0.55 | 71.64 ± 1.99 | 75.96 ± 2.36 | 0.00 ± 0.00 | 57.20 ± 4.14 | 38.57 ± 13.92 | 66.67 ± 0.00 |
 | BiLSTM | 48.28 ± 0.87 | 41.66 ± 1.29 | 30.20 ± 0.91 | 70.55 ± 1.67 | 74.58 ± 1.64 | 0.00 ± 0.00 | 55.31 ± 6.33 | 32.14 ± 22.59 | 57.78 ± 12.17 |
 | RoBERTa-base, utterance only | 55.34 ± 0.39 | 52.67 ± 1.35 | 37.89 ± 0.43 | 71.46 ± 1.11 | 74.56 ± 1.04 | 0.00 ± 0.00 | 59.43 ± 2.85 | 48.14 ± 18.15 | 50.00 ± 0.00 |
-| RoBERTa-base with context | [TBD] | [TBD] | [TBD] | [TBD] | [TBD] | [TBD] | [TBD] | [TBD] | [TBD] |
+| RoBERTa-base with context | 59.61 ± 0.34 | 57.05 ± 1.17 | 45.23 ± 0.92 | 74.06 ± 0.78 | 79.37 ± 0.93 | 0.00 ± 0.00 | 62.49 ± 2.87 | 31.81 ± 5.02 | 50.00 ± 0.00 |
 | ShiftAware | 57.39 ± 0.71 | 55.02 ± 1.11 | 45.00 ± 1.37 | 69.34 ± 1.21 | 73.82 ± 1.30 | 0.00 ± 0.00 | 53.69 ± 2.81 | 41.43 ± 42.38 | 45.71 ± 9.58 |
 | Inertia (gold history, reference) | 39.02 | 0.00 | 100.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 |
 | Markov (gold history, reference) | 36.84 | 0.00 | 92.04 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 |
@@ -122,38 +122,34 @@ Headline: MELD weighted-F1, DailyDialog micro-F1 without neutral.
 | meld | Emotional inertia (predicted history) | TF-IDF + SVM | stable | weighted_f1 | -2.66 [-5.49, +0.01], p = 0.070 |  |
 | meld | Emotional inertia (predicted history) | TF-IDF + SVM | shift | weighted_f1 | +32.97 [+29.14, +36.41], p < 0.001 |  |
 | meld | Emotional inertia (predicted history) | TF-IDF + SVM | all | macro_f1 | +18.91 [+16.36, +21.59], p < 0.001 |  |
-| dailydialog | RoBERTa-base, utterance only | RoBERTa-base with context | all | micro_f1_no_neutral | [TBD] |  |
-| dailydialog | RoBERTa-base, utterance only | RoBERTa-base with context | stable | micro_f1_no_neutral | [TBD] |  |
-| dailydialog | RoBERTa-base, utterance only | RoBERTa-base with context | shift | micro_f1_no_neutral | [TBD] |  |
-| dailydialog | RoBERTa-base, utterance only | RoBERTa-base with context | all | macro_f1 | [TBD] |  |
-| dailydialog | RoBERTa-base, utterance only | RoBERTa-base with context, class-weighted (B4+) | all | micro_f1_no_neutral | [TBD] |  |
-| dailydialog | RoBERTa-base, utterance only | RoBERTa-base with context, class-weighted (B4+) | stable | micro_f1_no_neutral | [TBD] |  |
-| dailydialog | RoBERTa-base, utterance only | RoBERTa-base with context, class-weighted (B4+) | shift | micro_f1_no_neutral | [TBD] |  |
-| dailydialog | RoBERTa-base, utterance only | RoBERTa-base with context, class-weighted (B4+) | all | macro_f1 | [TBD] |  |
-| dailydialog | RoBERTa-base with context | ShiftAware | all | micro_f1_no_neutral | [TBD] |  |
-| dailydialog | RoBERTa-base with context | ShiftAware | stable | micro_f1_no_neutral | [TBD] |  |
-| dailydialog | RoBERTa-base with context | ShiftAware | shift | micro_f1_no_neutral | [TBD] |  |
-| dailydialog | RoBERTa-base with context | ShiftAware | all | macro_f1 | [TBD] |  |
-| dailydialog | RoBERTa-base, utterance only | ShiftAware | all | micro_f1_no_neutral | +2.05 [+0.53, +3.60], p = 0.008 |  |
-| dailydialog | RoBERTa-base, utterance only | ShiftAware | stable | micro_f1_no_neutral | +7.11 [+4.27, +9.70], p < 0.001 |  |
-| dailydialog | RoBERTa-base, utterance only | ShiftAware | shift | micro_f1_no_neutral | -2.12 [-3.92, -0.20], p = 0.030 |  |
-| dailydialog | RoBERTa-base, utterance only | ShiftAware | all | macro_f1 | +5.40 [+2.73, +7.76], p < 0.001 |  |
-| dailydialog | TF-IDF + SVM | RoBERTa-base, utterance only | all | micro_f1_no_neutral | +2.30 [+0.19, +4.45], p = 0.032 |  |
-| dailydialog | TF-IDF + SVM | RoBERTa-base, utterance only | stable | micro_f1_no_neutral | +2.02 [-1.25, +5.36], p = 0.244 |  |
-| dailydialog | TF-IDF + SVM | RoBERTa-base, utterance only | shift | micro_f1_no_neutral | +0.96 [-1.82, +3.77], p = 0.496 |  |
-| dailydialog | TF-IDF + SVM | RoBERTa-base, utterance only | all | macro_f1 | -6.47 [-11.40, -0.47], p = 0.078 |  |
-| dailydialog | TF-IDF + SVM | BiGRU | all | micro_f1_no_neutral | -4.08 [-5.77, -2.47], p < 0.001 |  |
-| dailydialog | TF-IDF + SVM | BiGRU | stable | micro_f1_no_neutral | -5.70 [-8.10, -3.34], p < 0.001 |  |
-| dailydialog | TF-IDF + SVM | BiGRU | shift | micro_f1_no_neutral | +1.14 [-1.59, +3.64], p = 0.396 |  |
-| dailydialog | TF-IDF + SVM | BiGRU | all | macro_f1 | -5.51 [-8.30, -1.42], p < 0.001 |  |
-| dailydialog | TF-IDF + SVM | BiLSTM | all | micro_f1_no_neutral | -4.76 [-6.50, -3.08], p < 0.001 |  |
-| dailydialog | TF-IDF + SVM | BiLSTM | stable | micro_f1_no_neutral | -5.67 [-8.13, -3.18], p < 0.001 |  |
-| dailydialog | TF-IDF + SVM | BiLSTM | shift | micro_f1_no_neutral | +0.05 [-2.58, +2.84], p = 0.968 |  |
-| dailydialog | TF-IDF + SVM | BiLSTM | all | macro_f1 | -7.34 [-10.67, -2.59], p < 0.001 |  |
-| dailydialog | Emotional inertia (predicted history) | TF-IDF + SVM | all | micro_f1_no_neutral | +31.35 [+28.11, +34.56], p < 0.001 |  |
-| dailydialog | Emotional inertia (predicted history) | TF-IDF + SVM | stable | micro_f1_no_neutral | -4.17 [-7.71, -0.60], p = 0.025 |  |
-| dailydialog | Emotional inertia (predicted history) | TF-IDF + SVM | shift | micro_f1_no_neutral | +61.26 [+56.53, +65.74], p < 0.001 |  |
-| dailydialog | Emotional inertia (predicted history) | TF-IDF + SVM | all | macro_f1 | +17.12 [+14.19, +20.83], p < 0.001 |  |
+| dailydialog | RoBERTa-base, utterance only | RoBERTa-base with context | all | micro_f1_no_neutral | +4.27 [+2.41, +6.16], p < 0.001 |  |
+| dailydialog | RoBERTa-base, utterance only | RoBERTa-base with context | stable | micro_f1_no_neutral | +7.34 [+3.90, +10.69], p < 0.001 |  |
+| dailydialog | RoBERTa-base, utterance only | RoBERTa-base with context | shift | micro_f1_no_neutral | +2.60 [+0.43, +4.82], p = 0.017 |  |
+| dailydialog | RoBERTa-base, utterance only | RoBERTa-base with context | all | macro_f1 | +7.76 [+3.65, +10.89], p < 0.001 |  |
+| dailydialog | RoBERTa-base with context | ShiftAware | all | micro_f1_no_neutral | -2.22 [-3.67, -0.69], p = 0.005 |  |
+| dailydialog | RoBERTa-base with context | ShiftAware | stable | micro_f1_no_neutral | -0.24 [-2.67, +2.17], p = 0.861 |  |
+| dailydialog | RoBERTa-base with context | ShiftAware | shift | micro_f1_no_neutral | -4.72 [-6.70, -2.81], p < 0.001 |  |
+| dailydialog | RoBERTa-base with context | ShiftAware | all | macro_f1 | -2.36 [-5.36, +2.04], p = 0.300 |  |
+| dailydialog | RoBERTa-base, utterance only | ShiftAware | all | micro_f1_no_neutral | +2.05 [+0.63, +3.47], p = 0.009 |  |
+| dailydialog | RoBERTa-base, utterance only | ShiftAware | stable | micro_f1_no_neutral | +7.11 [+4.49, +9.64], p < 0.001 |  |
+| dailydialog | RoBERTa-base, utterance only | ShiftAware | shift | micro_f1_no_neutral | -2.12 [-3.99, -0.18], p = 0.035 |  |
+| dailydialog | RoBERTa-base, utterance only | ShiftAware | all | macro_f1 | +5.40 [+3.05, +7.66], p < 0.001 |  |
+| dailydialog | TF-IDF + SVM | RoBERTa-base, utterance only | all | micro_f1_no_neutral | +2.30 [+0.29, +4.32], p = 0.031 |  |
+| dailydialog | TF-IDF + SVM | RoBERTa-base, utterance only | stable | micro_f1_no_neutral | +2.02 [-1.36, +5.36], p = 0.261 |  |
+| dailydialog | TF-IDF + SVM | RoBERTa-base, utterance only | shift | micro_f1_no_neutral | +0.96 [-1.88, +3.67], p = 0.502 |  |
+| dailydialog | TF-IDF + SVM | RoBERTa-base, utterance only | all | macro_f1 | -6.47 [-11.32, -0.30], p = 0.080 |  |
+| dailydialog | TF-IDF + SVM | BiGRU | all | micro_f1_no_neutral | -4.08 [-5.59, -2.47], p < 0.001 |  |
+| dailydialog | TF-IDF + SVM | BiGRU | stable | micro_f1_no_neutral | -5.70 [-8.12, -3.18], p < 0.001 |  |
+| dailydialog | TF-IDF + SVM | BiGRU | shift | micro_f1_no_neutral | +1.14 [-1.49, +3.82], p = 0.386 |  |
+| dailydialog | TF-IDF + SVM | BiGRU | all | macro_f1 | -5.51 [-8.41, -1.18], p < 0.001 |  |
+| dailydialog | TF-IDF + SVM | BiLSTM | all | micro_f1_no_neutral | -4.76 [-6.45, -2.99], p < 0.001 |  |
+| dailydialog | TF-IDF + SVM | BiLSTM | stable | micro_f1_no_neutral | -5.67 [-8.18, -3.14], p < 0.001 |  |
+| dailydialog | TF-IDF + SVM | BiLSTM | shift | micro_f1_no_neutral | +0.05 [-2.50, +2.63], p = 0.967 |  |
+| dailydialog | TF-IDF + SVM | BiLSTM | all | macro_f1 | -7.34 [-10.66, -2.65], p < 0.001 |  |
+| dailydialog | Emotional inertia (predicted history) | TF-IDF + SVM | all | micro_f1_no_neutral | +31.35 [+28.23, +34.64], p < 0.001 |  |
+| dailydialog | Emotional inertia (predicted history) | TF-IDF + SVM | stable | micro_f1_no_neutral | -4.17 [-8.05, -0.57], p = 0.021 |  |
+| dailydialog | Emotional inertia (predicted history) | TF-IDF + SVM | shift | micro_f1_no_neutral | +61.26 [+56.26, +65.93], p < 0.001 |  |
+| dailydialog | Emotional inertia (predicted history) | TF-IDF + SVM | all | macro_f1 | +17.12 [+13.94, +20.93], p < 0.001 |  |
 
 ## E9 efficiency
 
@@ -173,5 +169,5 @@ Each model was measured on its owner's machine (see `machine`), so compare withi
 | dailydialog | b2_bigru | 831,623 | 3.57 | 362.1 | 1.10 / 2.38 | Windows-11-10.0.26300-SP0 |  |
 | dailydialog | b2_bilstm | 848,263 | 3.64 | 358.5 | 0.96 / 2.29 | Windows-11-10.0.26300-SP0 |  |
 | dailydialog | b3 | 124,651,015 | 502.20 | 842.2 | 106.83 / 149.69 | Linux-6.6.122+-x86_64-with-glibc2.39 |  |
-| dailydialog | b4 |  |  |  |  |  | [TBD] |
+| dailydialog | b4 | 124,651,015 | 502.20 | 3096.5 | 210.80 / 471.59 | Linux-6.6.159+-x86_64-with-glibc2.39 |  |
 | dailydialog | shiftaware | 127,217,569 | 508.96 |  | 50.12 / 133.65 | macOS-27.0.1-arm64-arm-64bit | untrained weights, same architecture; one new turn incl. re-encoding its prefix |

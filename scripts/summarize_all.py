@@ -272,6 +272,8 @@ def tables(data: dict[str, Loaded], n_boot: int, n_perm: int, seed: int = 0):
             e1.append(row)
 
         for a, b, target in PAIRS:
+            if dataset not in BY_KEY[a].prefix or dataset not in BY_KEY[b].prefix:
+                continue  # not trained on this dataset (B4+ is MELD only)
             for group, metric in [
                 ("all", headline),
                 ("stable", headline),

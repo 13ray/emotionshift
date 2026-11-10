@@ -1,12 +1,11 @@
 # B4 · RoBERTa with context (workstream #5)
 
-Status: **MELD done** (window sweep, B4, B4+, controls). **DailyDialog is still training** and is added in a
-follow-up; its rows in the group summary stay `[TBD]` until then.
+Status: **done** (MELD: window sweep, B4, B4+, controls; DailyDialog: B4, controls).
 
 Trained on a Colab T4 with [`notebooks/b4_colab.ipynb`](../notebooks/b4_colab.ipynb)
-(`python scripts/train_b4.py`, about 3.5 hours for the MELD part), then `python scripts/analyse_b4.py` on a
+(`python scripts/train_b4.py`, about 3.5 hours for MELD and 4.5 hours for DailyDialog), then `python scripts/analyse_b4.py` on a
 laptop (seconds). Every number below is in [`reports/b4/results.md`](../reports/b4/results.md) and can be
-recomputed from `predictions/b4_*.csv`, `predictions/b4plus_*.csv` and `reports/b4/meld/preds/`.
+recomputed from `predictions/b4_*.csv`, `predictions/b4plus_*.csv` and `reports/b4/<dataset>/preds/`.
 
 ## What it is
 
@@ -21,7 +20,7 @@ Monica: Oh my God! </s> Chandler: What? </s> Monica: I can't believe it.
 
 - Code: `emotionshift/models/roberta_context.py` (`context_inputs`, `RobertaContext`), tests in
   `tests/test_roberta_context.py`
-- Config: `configs/b4_context.yaml` — lr 1e-5, batch 32, 4 epochs on MELD, fp16, max 256 tokens. Inputs that are
+- Config: `configs/b4_context.yaml` — lr 1e-5, batch 32, 4 epochs on MELD and 3 on DailyDialog, fp16, max 256 tokens. Inputs that are
   too long are cut **from the left**, so the oldest context goes first and the current utterance is always kept
 - Past turns only (causal), so the model can label a conversation turn by turn
 - **Window sweep (E3)**: k ∈ {1, 3, 5, 10, all} × 3 seeds on MELD. The window is chosen on **dev only**
@@ -125,9 +124,46 @@ The five trained B4 models, with their **test input** changed (no retraining). W
 (106 ms) and its p95 is above the demo's 300 ms budget; k = 3 stays inside it. Seed-0 runs; the 5-seed mean
 train time at k = all is 10.4 min.
 
+## Results on DailyDialog
+
+B4 at the window chosen on MELD dev (k = all), 3 epochs, 5 seeds. Headline: micro-F1 without neutral on the
+de-duplicated test set. Dev scores per seed: 62.14 / 62.29 / 62.25 / 61.49 / 62.30.
+
+| Model | Test split | n | Micro-F1 excl. neutral | Macro-F1 | Weighted-F1 | Derived shift F1 |
+|---|---|---|---|---|---|---|
+| B3 RoBERTa, utterance only | test_dedup | 7019 | 55.34 ± 0.39 | 39.69 ± 1.09 | 84.80 | 52.28 |
+| **B4 RoBERTa + context (k = all)** | test_dedup | 7019 | **59.61 ± 0.34** [56.9, 62.3] | **47.45 ± 1.99** [42.1, 51.5] | 85.63 ± 0.17 | 52.78 ± 0.95 |
+| B4 RoBERTa + context (k = all) | test | 7740 | 59.66 ± 0.26 [56.9, 62.2] | 49.04 ± 2.22 [43.5, 53.2] | 85.51 ± 0.12 | 52.63 ± 0.94 |
+
+- **Context helps much more than on MELD**: +4.27 micro-F1 over B3 (95% CI [+2.41, +6.16], p < 0.001) and
+  +7.76 macro-F1. B4 is the best model of the group on DailyDialog, ahead of ShiftAware (57.39) by
+  2.22 [0.69, 3.67], and above the published COSMIC score (about 58) quoted in the proposal.
+- **The gain is again larger on stable turns** (headline metric): stable 37.89 → 45.23, **+7.34** [+3.90, +10.69];
+  shift 71.46 → 74.06, **+2.60** [+0.43, +4.82]. Unlike on MELD, shift turns do gain a little.
+- **By shift type** (weighted-F1, table in `reports/b4/results.md`): onsets (neutral → emotion) gain +5.78
+  [+3.47, +7.98], offsets (emotion → neutral) lose 4.78 [−6.99, −2.93]. The same offset loss as on MELD: with
+  context the model holds on to the previous emotion.
+- Rare classes improve without class weights (seed 0): sadness 19.6 → 34.3, disgust 8.5 → 21.4, fear 18.2 → 33.3.
+
+### Input controls (E4), micro-F1 excl. neutral, test_dedup
+
+| Input | All | First | Stable | Shift |
+|---|---|---|---|---|
+| B3 (trained without context) | 55.34 ± 0.39 | 52.67 ± 1.35 | 37.89 ± 0.43 | 71.46 ± 1.11 |
+| real context (B4) | 59.61 ± 0.34 | 57.05 ± 1.17 | 45.23 ± 0.92 | 74.06 ± 0.78 |
+| no context at test | 52.92 ± 0.52 | 53.40 ± 0.97 | 37.22 ± 0.60 | 66.59 ± 1.14 |
+| shuffled context | 50.52 ± 0.42 | 51.97 ± 1.32 | 31.90 ± 0.73 | 66.60 ± 0.76 |
+| shuffled speakers | 59.70 ± 0.37 | 56.76 ± 1.19 | 45.57 ± 0.73 | 74.03 ± 0.93 |
+
+Shuffled context is 9 points below real context and below B3, so H2 holds here too. Speaker names (A / B) carry
+nothing: shuffling them changes the score by 0.09.
+
+Efficiency: 51.6 min per seed on a T4 (B3: 14.0 min), CPU latency 211 ms median / 472 ms p95 per utterance,
+292 utt/s in batches.
+
 ## Limits
 
-- The window was swept on MELD only; DailyDialog reuses k = all.
+- The window was swept on MELD only; DailyDialog reuses k = all. B4+ was trained on MELD only.
 - Controls change the test input of models trained on real context; models retrained on shuffled context could
   behave differently.
 - Trained model weights are not kept (Colab disk); retrain one seed with the notebook to get a checkpoint.
