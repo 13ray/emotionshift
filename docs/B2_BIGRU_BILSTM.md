@@ -1,4 +1,4 @@
-# B2: BiGRU / BiLSTM (Thanh)
+# B2: BiGRU / BiLSTM (DANG NGUYEN TUAN THANH)
 
 This workstream compares two **utterance-only** recurrent baselines. Both read
 the words of the current utterance in both directions. Neither receives other
@@ -98,7 +98,7 @@ The separate standard deviation describes variation across seeds.
 | Figures (2160 pixels wide) and source numbers | `reports/b2/figures/*.png`, `*.csv` |
 | Executed notebook | `notebooks/b2_bigru_bilstm.ipynb` |
 | Config and data/source hashes | `reports/b2/run_manifest.json` |
-| Result notes, references, contribution draft | `deliverables/03_thanh/` |
+| References (APA) | `docs/references/b2_refs.txt` |
 
 CSV columns exactly match the shared prediction contract. Model names are
 `b2_bigru` and `b2_bilstm`; probabilities follow `EMOTIONS` order. Checkpoints
@@ -145,18 +145,12 @@ the repository's existing report and uses a different model.
 Compare actual results in `reports/b2/results.md`; do not assume either neural
 model improves on the TF-IDF baseline.
 
-See `deliverables/03_thanh/refs.txt` for APA references.
+See `docs/references/b2_refs.txt` for APA references.
 
-## Validation and GitHub hand-in
+## Validation
 
 The full test suite passed all 19 checks. The smoke run completed on both datasets.
 The artifact audit (`python scripts/verify_b2.py`) checks all 30 prediction CSVs
 against the shared loader and recomputes their stored metrics, checks checkpoint
 sizes, figure resolution and source CSVs, and validates notebook execution.
 Its result is `reports/b2/verification.json`.
-
-To contribute, fork the upstream repository, add the new/modified files from the
-submission bundle to your fork, review the diff, and open a pull request for
-Lixian. Use `docs/B2_PR_DESCRIPTION.md` as the PR description. Keep `data/raw/`,
-`.venv/`, caches and `outputs_quick/` out of Git. The bundle includes the small
-saved `.pt` files required for the demo. Slides and video are prepared separately.

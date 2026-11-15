@@ -44,10 +44,7 @@ def release_files():
         ROOT / "notebooks/b0_baselines.ipynb",
     ]
     files += [
-        p
-        for folder in [REPORT, ROOT / "deliverables/01_inertia"]
-        for p in folder.rglob("*")
-        if p.is_file()
+        p for folder in [REPORT, ROOT / "docs/references"] for p in folder.rglob("*") if p.is_file()
     ]
     files += list((ROOT / "predictions").glob("b0_*.csv"))
     return sorted(set(files))

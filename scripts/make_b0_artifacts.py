@@ -264,7 +264,7 @@ def notebook():
             "from scripts.make_b0_artifacts import audit\nprint('Prediction files verified:', audit())"
         ),
         md(
-            "## References and hand-in\nSee `docs/B0_BASELINES.md` and `deliverables/01_inertia/refs.txt`. "
+            "## References and hand-in\nSee `docs/B0_BASELINES.md` and `docs/references/b0_refs.txt`. "
             "The data-loader, donor and metric implementation are shared team work. "
             "This work adds B0 rules, experiments, audit and explanation. "
             "Use your own voice for narration and the shared slide template."

@@ -18,7 +18,7 @@ import pandas as pd
 from nbclient import NotebookClient
 
 REPORT = ROOT / "reports" / "b2"
-HANDIN = ROOT / "deliverables" / "03_thanh"
+HANDIN = ROOT / "reports" / "b2" / "handin"
 
 
 def read_json(path):
@@ -29,7 +29,7 @@ def main():
     os.chdir(ROOT)
     figures = REPORT / "figures"
     figures.mkdir(exist_ok=True)
-    HANDIN.mkdir(exist_ok=True)
+    HANDIN.mkdir(parents=True, exist_ok=True)
     (HANDIN / "figures").mkdir(exist_ok=True)
     rows, summaries, selected = [], [], {}
     for dataset, split, metric in [("meld", "test", "weighted_f1"),
@@ -198,7 +198,7 @@ def make_notebook():
            "They omit conversation history, speakers, audio and images. Probability outputs are softmax values, "
            "not calibrated confidence estimates. Exact timings depend on CPU and thread settings."),
         code('for dataset in ["meld", "dailydialog"]:\n    for arch in ["gru", "lstm"]:\n        s = json.loads((ROOT / f"reports/b2/{dataset}/b2_bi{arch}/summary.json").read_text())\n        e = s["efficiency"]\n        print(dataset, arch, {k: e[k] for k in ["parameters", "model_file_mb", "train_seconds", "latency_one_utterance"]})'),
-        md("## References\nSee `deliverables/03_thanh/refs.txt` for APA references to GRU, LSTM, bidirectional RNN, MELD and DailyDialog.\n\n"
+        md("## References\nSee `docs/references/b2_refs.txt` for APA references to GRU, LSTM, bidirectional RNN, MELD and DailyDialog.\n\n"
            "")]
     nb = nbf.v4.new_notebook(cells=cells, metadata={"kernelspec": {
         "display_name": "Python 3", "language": "python", "name": "python3"}})
