@@ -10,7 +10,7 @@ here and in which format: [`docs/TEAM_GUIDE.pdf`](../docs/TEAM_GUIDE.pdf).
 | `02_lixian/` | #2 TF-IDF + linear SVM | Lixian |
 | `03_thanh/` | #3 BiGRU / BiLSTM | Thanh |
 | `04_kly/` | #4 Transformer, utterance only | KL Y |
-| `05_anqi/` | #5 Context-aware RoBERTa | Anqi |
+| `05_context/` | #5 Context-aware RoBERTa | QIN LIXIAN & HE RUIZHI |
 | `06_shiftaware/` | #6 ShiftAware | open |
 
 Typical contents: `slides.pptx`, `script.md`, `figures/` (PNG + matching CSV),
