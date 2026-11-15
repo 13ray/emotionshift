@@ -13,7 +13,7 @@ proposal.
 | 2 | TF-IDF + linear SVM | QIN LIXIAN | ✅ done: [`docs/B1_TFIDF_SVM.md`](docs/B1_TFIDF_SVM.md) |
 | 3 | BiGRU / BiLSTM | DANG NGUYEN TUAN THANH | ✅ done, merged 30 Oct: [`docs/B2_BIGRU_BILSTM.md`](docs/B2_BIGRU_BILSTM.md) |
 | 4 | Transformer, utterance only (RoBERTa-base) | YE KUNLIN | ✅ done, merged 30 Oct: [`docs/B3_ROBERTA.md`](docs/B3_ROBERTA.md); trained models on Google Drive |
-| 5 | Context-aware RoBERTa | HU ANQI | ✅ done, merged 10 Nov: [`docs/B4_CONTEXT.md`](docs/B4_CONTEXT.md), [`results`](reports/b4/results.md) |
+| 5 | Context-aware RoBERTa | QIN LIXIAN & HE RUIZHI | ✅ done, merged 10 Nov: [`docs/B4_CONTEXT.md`](docs/B4_CONTEXT.md), [`results`](reports/b4/results.md) |
 | 6 | ShiftAware (speaker / shift-aware) | WANG ZHOUFU | ✅ done, merged 1 Nov: [`results`](reports/shiftaware/results.md), [`selection`](reports/shiftaware/selection.md), [`notebook`](notebooks/shiftaware.ipynb); predictions include a `shift_prob` column |
 | — | Demo app, slides and video integration | QIN LIXIAN | demo app: [`app/app.py`](app/app.py) (`uv sync --extra demo`, then `uv run streamlit run app/app.py`); slides and video are submitted separately |
 
