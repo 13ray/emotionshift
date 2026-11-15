@@ -479,8 +479,8 @@ def _status(e1, e2, paired) -> list[str]:
 
 
 EMOWOZ_NOTE = [
-    "Native seven labels, 8,634 labelled user turns. Workstreams 4 and 5 have not been run on"
-    " EmoWOZ. ShiftAware is exploratory here: three seeds (0, 1, 42), variant"
+    "Native seven labels, 8,634 labelled user turns."
+    " ShiftAware is exploratory here: three seeds (0, 1, 42), variant"
     " `shiftaware_tf-d768-2layer-hm`, the dev-best of the three-seed variants."
     " In the strata table, offset turns have gold label neutral, so a score without neutral is 0"
     " there by construction.",

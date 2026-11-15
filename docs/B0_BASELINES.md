@@ -136,7 +136,7 @@ the model. No retraining or scoring rules change.
 | Recognition predictions | `predictions/b0_<name>_<dataset>_<split>_seed<k>.csv` |
 | Executed walkthrough | `notebooks/b0_baselines.ipynb` |
 | Figures at least 1600px wide + source CSVs | `reports/b0/figures/` |
-| Video script, references, contribution draft | `deliverables/01_inertia/` |
+| References (APA) | `docs/references/b0_refs.txt` |
 | Release audit (schema, scores, hashes, English text, notebook, figures, tests) | `scripts/verify_b0.py`, `reports/b0/release_check.json` |
 
 Prediction CSVs retain the original twelve columns **first**, then provenance,

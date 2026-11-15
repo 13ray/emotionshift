@@ -98,7 +98,7 @@ The separate standard deviation describes variation across seeds.
 | Figures (2160 pixels wide) and source numbers | `reports/b2/figures/*.png`, `*.csv` |
 | Executed notebook | `notebooks/b2_bigru_bilstm.ipynb` |
 | Config and data/source hashes | `reports/b2/run_manifest.json` |
-| Result notes, references, contribution draft | `deliverables/03_thanh/` |
+| References (APA) | `docs/references/b2_refs.txt` |
 
 CSV columns exactly match the shared prediction contract. Model names are
 `b2_bigru` and `b2_bilstm`; probabilities follow `EMOTIONS` order. Checkpoints
@@ -145,7 +145,7 @@ the repository's existing report and uses a different model.
 Compare actual results in `reports/b2/results.md`; do not assume either neural
 model improves on the TF-IDF baseline.
 
-See `deliverables/03_thanh/refs.txt` for APA references. Implementation and
+See `docs/references/b2_refs.txt` for APA references. Implementation and
 preparation used AI assistance. Review and understand the code, disclose this
 complete unedited chat as the guide requires, and complete the personal forms.
 
