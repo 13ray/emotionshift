@@ -73,8 +73,7 @@ For a video code snippet, show the `_read_emowoz` label-extraction block and
 `load_emowoz_shared` (at most 15 lines); demonstrate both views and the summary
 tables. This change supplies dataset integration and source tables,
 not trained-model scores. Slides, recorded narration, signed forms and the
-executed presentation notebook remain separate team hand-in items described
-in `docs/TEAM_GUIDE.md`.
+executed presentation notebook remain separate team hand-in items.
 
 ## References
 

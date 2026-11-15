@@ -43,16 +43,6 @@ df = load("meld")  # or "dailydialog" or "emowoz"; one row per utterance
 dd = load("dailydialog", splits=("train", "dev", "test_dedup"))
 ```
 
-## How to add your work (no invite needed)
-
-1. **Fork** this repo.
-2. Add your files in your fork, **in your own folder or module** (git push, or *Add file › Upload files* on GitHub).
-3. **Contribute › Open pull request.** Lixian reviews and merges.
-
-Before opening the pull request: use the shared loader (no separate data splits),
-write predictions in the shared format below, include one executed notebook,
-keep raw data and files over 50 MB out of Git, and make sure `pytest` passes.
-
 ## Shared data rules (aligned with the proposal)
 
 All in `emotionshift/data/`, checked by `tests/test_data.py`.
@@ -131,9 +121,8 @@ reports/                 results tables and figures per model (b0 to b4, shiftaw
                          and summary/ for the group tables
 predictions/             shared-format prediction CSVs
 models/                  small demo checkpoints only (b2_*.pt); large models live on Google Drive
-docs/                    proposal snapshot, team guide, per-model write-ups
+docs/                    proposal snapshot, per-model write-ups, reference lists (references/)
 pilot/                   original proposal pilot scripts and statistics
-deliverables/            temporary collection folders for the video (removed before submission)
 ```
 
 ## EmoWOZ shared-label view
@@ -253,9 +242,7 @@ lower confidence. To review those candidates manually, run
 `uv run vulture --min-confidence 60`; a low-confidence finding alone is not a
 reason to delete a public interface.
 
-Edit the notebooks directly. `docs/TEAM_GUIDE.md` is the authoritative hand-in
-guide; the PDF is an exported handout. Neither needs a Python generator as a
-second copy of its content. Local caches and smoke-test output are ignored by Git.
+Edit the notebooks directly. Local caches and smoke-test output are ignored by Git.
 
 ## AI use
 
